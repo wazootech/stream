@@ -1,0 +1,106 @@
+:root {
+  --bg: #0e1116;
+  --panel: rgba(18, 22, 29, 0.92);
+  --line: #263041;
+  --text: #e8edf5;
+  --muted: #8b97ab;
+  --accent: #9dff5a;
+  --warn: #ffb347;
+  font-family: "Cascadia Code", "JetBrains Mono", Consolas, ui-monospace,
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: transparent; /* browser sources composite over the scene */
+  color: var(--text);
+  overflow: hidden;
+}
+
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+}
+
+.tag,
+h2 {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.clock {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.done .clock {
+  color: var(--warn);
+  animation: pulse 1s steps(2, jump-none) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.bar {
+  height: 6px;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar > i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.25s linear;
+}
+
+.tasks {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.tasks li {
+  display: grid;
+  grid-template-columns: 3ch 1fr; /* "[x]" is three monospace cells */
+  gap: 10px;
+  align-items: start;
+  line-height: 1.35;
+}
+
+.tasks li::before {
+  content: "[ ]";
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.tasks li.done {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.tasks li.done::before {
+  content: "[x]";
+  color: var(--accent);
+}
+
+.empty {
+  color: var(--muted);
+}

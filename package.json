@@ -1,0 +1,21 @@
+{
+  "name": "@fartlabs/stream",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OBS scenes, overlays, and session templates for the FartLabs stream.",
+  "license": "WTFPL",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "node src/build.ts",
+    "lab": "node src/cli.ts",
+    "check": "tsc --noEmit",
+    "test": "node --test \"src/**/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}

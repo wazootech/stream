@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Screen</title>
+    <link rel="stylesheet" href="lab.css" />
+    <style>
+      /* ?mode=starting | break | ending (1920x1080). */
+      .screen {
+        height: 100vh;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 28px;
+        text-align: center;
+        padding: 80px;
+      }
+      #title {
+        font-size: 34px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      #headline {
+        font-size: 64px;
+        line-height: 1.1;
+      }
+      .clock {
+        font-size: 220px;
+      }
+      #subline {
+        font-size: 30px;
+        color: var(--muted);
+        max-width: 1200px;
+        min-height: 1.3em;
+      }
+      .list {
+        font-size: 28px;
+        text-align: left;
+        justify-self: center;
+        min-width: 520px;
+      }
+      .list h2 {
+        margin-bottom: 14px;
+      }
+      .list .tasks {
+        font-size: 28px;
+        gap: 12px;
+      }
+      /* On the ending screen every listed task is done; don't strike it out. */
+      body[data-mode="ending"] .tasks li.done {
+        color: var(--text);
+        text-decoration: none;
+      }
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="screen">
+      <div id="title"></div>
+      <h1 id="headline"></h1>
+      <div class="clock" id="clock" hidden>--:--</div>
+      <p id="subline"></p>
+      <section class="list" id="list" hidden>
+        <h2 id="list-title"></h2>
+        <ul class="tasks" id="tasks"></ul>
+      </section>
+    </main>
+
+    <script src="lab.js"></script>
+    <script src="screen.js"></script>
+  </body>
+</html>
