@@ -78,6 +78,8 @@ Run `npm run session -- help` for everything. A shell alias like
 - [`docs/channel-panels.md`](docs/channel-panels.md): about, schedule, and chat roles.
 - [`docs/alerts.md`](docs/alerts.md): follow, sub, gift, raid, and cheer cards, and how
   to rehearse them.
+- [`docs/music.md`](docs/music.md): background music for waiting and breaks, with the
+  license caveats.
 
 ## Development
 
