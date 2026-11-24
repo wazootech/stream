@@ -12,9 +12,9 @@ test("the collection survives a JSON round trip", () => {
 test("every scene in scene_order exists and is a scene", () => {
   assert.deepEqual(collection.scene_order.map((s) => s.name), [
     "Starting Soon",
-    "Lab",
+    "Main",
     "Focus",
-    "Lab Break",
+    "Break",
     "Ending",
   ]);
   for (const { name } of collection.scene_order) {

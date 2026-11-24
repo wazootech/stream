@@ -7,7 +7,7 @@ When you have nothing to say, pick one:
 - **Narrate the decision, not the action.** Not "I'm typing a function" but
   "I'm picking a flag over a subcommand because...".
 - **Make a prediction.** "I bet this fails on the first run."
-  `npm run lab -- predict "..."`, then settle it with `predict hit` or
+  `npm run session -- predict "..."`, then settle it with `predict hit` or
   `predict miss`.
 - **Read the error out loud** and guess the cause before you look it up.
 - **Explain the project to a newcomer.** Two sentences, as if they just walked
@@ -15,7 +15,7 @@ When you have nothing to say, pick one:
 - **Compare two options and pick one.** Say why the loser lost.
 - **Recap the last twenty minutes.**
 - **Read the docs or an issue thread aloud** and react to it.
-- **Take a lab break.** If you're drifting, `npm run lab -- break` and go move
+- **Take a break.** If you're drifting, `npm run session -- break` and go move
   for five minutes. That's content, not a failure.
 
 ## Talk to one future viewer

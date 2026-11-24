@@ -1,6 +1,6 @@
 # stream
 
-OBS scenes, overlays, and session templates for the FartLabs stream. See
+OBS scenes, overlays, and session templates for the Wazoo stream. See
 [`README.md`](README.md) for setup and usage.
 
 ## Rules
@@ -19,3 +19,9 @@ OBS scenes, overlays, and session templates for the FartLabs stream. See
 - **Verify before pushing:** `npm run check && npm test && npm run build`.
 - **Layouts target a 1920x1080 canvas.** Change `CANVAS` in `src/scenes.ts` if
   that ever changes, and update the README.
+- **Brand strings live in `src/brand.ts`.** The accent color is in
+  `overlays/session.css` and the channel copy is in `docs/`. Keep the Wazoo
+  voice plain: Ethan from Wazoo, building in public.
+- **Family rules apply.** See the
+  [Wazoo workspace guide](https://github.com/wazootech/workspace/blob/main/AGENTS.md)
+  for code-health, supply-chain, and secret-scan standards.

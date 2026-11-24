@@ -1,6 +1,6 @@
 node_modules/
 dist/
 
-# Live stream state: written by `npm run lab`, read by the overlays.
+# Live stream state: written by `npm run session`, read by the overlays.
 overlays/state.json
 overlays/state.js

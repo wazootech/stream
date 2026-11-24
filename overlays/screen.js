@@ -1,13 +1,13 @@
 // @ts-check
 (() => {
-  const { $, watchState, remainingMs, formatClock } = window.Lab;
+  const { $, watchState, remainingMs, formatClock } = window.Session;
   const raw = new URLSearchParams(location.search).get("mode");
   const mode = raw === "break" || raw === "ending" ? raw : "starting";
   document.body.dataset.mode = mode;
 
-  // A rotating nudge for lab breaks, so moving is part of the show.
+  // A rotating nudge for breaks, so moving is part of the show.
   const BREAK_NUDGES = [
-    "Stand up. Stretch. The experiments will keep.",
+    "Stand up. Stretch. The tasks will keep.",
     "Water. Actual water.",
     "Look at something far away for twenty seconds.",
     "Walk a lap around the room.",
@@ -32,19 +32,19 @@
   }
 
   function render() {
-    $("title").textContent = state?.title || "FartLabs Lab";
+    $("title").textContent = state?.title || "Wazoo Live";
     const tasks = state?.tasks ?? [];
     const hasTimer = !!state?.timer;
 
     if (mode === "starting") {
-      $("headline").textContent = "The lab opens soon";
+      $("headline").textContent = "Starting soon";
       $("subline").textContent = state?.goal || "";
-      $("list-title").textContent = "Today's experiments";
+      $("list-title").textContent = "Today's tasks";
       renderTasks(tasks);
       $("list").hidden = tasks.length === 0;
       $("clock").hidden = !hasTimer;
     } else if (mode === "break") {
-      $("headline").textContent = "Lab break";
+      $("headline").textContent = "Break";
       const nudge = Math.floor(Date.now() / 15000) % BREAK_NUDGES.length;
       $("subline").textContent = BREAK_NUDGES[nudge];
       $("list").hidden = true;
@@ -52,9 +52,9 @@
     } else {
       const done = tasks.filter((t) => t.done);
       const p = state?.predictions;
-      $("headline").textContent = "Lab report";
+      $("headline").textContent = "Session recap";
       $("subline").textContent = [
-        `${done.length} of ${tasks.length} experiments finished`,
+        `${done.length} of ${tasks.length} tasks finished`,
         p && p.total > 0 ? `predictions called ${p.hits}/${p.total}` : "",
         "thanks for watching",
       ].filter(Boolean).join(" · ");

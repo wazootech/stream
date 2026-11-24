@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { BRAND } from "./brand.ts";
 
 /** Canvas the layouts are designed for. Twitch wants 16:9. */
 export const CANVAS = { width: 1920, height: 1080 } as const;
@@ -191,9 +192,9 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
 
   const scenes = [
     scene("Starting Soon", [[backdrop, full], [starting, full]]),
-    scene("Lab", mainLayers),
+    scene("Main", mainLayers),
     scene("Focus", focusLayers),
-    scene("Lab Break", [[backdrop, full], [labBreak, full]]),
+    scene("Break", [[backdrop, full], [labBreak, full]]),
     scene("Ending", [[backdrop, full], [ending, full]]),
   ];
 
@@ -210,7 +211,7 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
   ];
 
   return {
-    name: options.name ?? "FartLabs Stream",
+    name: options.name ?? BRAND.collectionName,
     DesktopAudioDevice1: audio("wasapi_output_capture", "Desktop Audio", 0.6, "libobs"),
     AuxAudioDevice1: audio("wasapi_input_capture", "Mic/Aux", 1.0, "libobs", {
       filters: micFilters(),

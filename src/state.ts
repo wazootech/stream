@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { BRAND } from "./brand.ts";
 
 export interface Task {
   text: string;
@@ -52,7 +53,7 @@ export function statePaths(dir: string = overlaysDir): {
 
 export function defaultState(): State {
   return {
-    title: "FartLabs Lab",
+    title: BRAND.defaultTitle,
     goal: "",
     tasks: [],
     timer: null,
@@ -193,8 +194,8 @@ export function applyCommand(
     case "break": {
       const minutes = parseMinutes(rest[0], 5);
       return {
-        state: startTimer(state, minutes, "Lab break", now),
-        message: `Lab break: ${minutes} min. Go move.`,
+        state: startTimer(state, minutes, "Break", now),
+        message: `Break: ${minutes} min. Go move.`,
       };
     }
     case "predict": {
@@ -256,15 +257,15 @@ export function describe(state: State, now = Date.now()): string {
   return lines.join("\n");
 }
 
-export const USAGE = `npm run lab -- <command>
+export const USAGE = `npm run session -- <command>
 
   goal <text>             What's on the bench right now
-  task add <text>         Add an experiment to the checklist
+  task add <text>         Add an task to the checklist
   task done <n>           Check one off (also: undo <n>, rm <n>, clear)
   timer <minutes> [label] Start a countdown (timer stop to cancel)
-  break [minutes]         Start a lab break countdown (default 5)
+  break [minutes]         Start a break countdown (default 5)
   predict <text>          Put a prediction on the air
   predict hit | miss      Settle it and update the score
-  title <text>            Rename the lab shown on the overlays
+  title <text>            Rename the stream title shown on the overlays
   reset                   Clear the session (keeps the title)
   status                  Print the current state`;

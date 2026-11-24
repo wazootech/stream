@@ -1,6 +1,6 @@
 // @ts-check
 (() => {
-  const { $, watchState, remainingMs, formatClock } = window.Lab;
+  const { $, watchState, remainingMs, formatClock } = window.Session;
   const layout = new URLSearchParams(location.search).get("layout");
   document.body.dataset.layout = layout === "compact" ? "compact" : "sidebar";
 
@@ -8,14 +8,14 @@
   let state = null;
 
   function renderStatic() {
-    $("goal").textContent = state?.goal || "Warming up the lab";
+    $("goal").textContent = state?.goal || "Getting set up";
 
     const tasks = $("tasks");
     tasks.replaceChildren();
     if (!state || state.tasks.length === 0) {
       const li = document.createElement("li");
       li.className = "empty";
-      li.textContent = "No experiments yet.";
+      li.textContent = "No tasks yet.";
       tasks.append(li);
     } else {
       for (const task of state.tasks) {

@@ -1,6 +1,6 @@
 import type { State, Timer } from "../src/state.ts";
 
-interface LabApi {
+interface SessionApi {
   /** Reloads state.js every couple of seconds and reports the latest. */
   watchState(onState: (state: State | null) => void): void;
   remainingMs(timer: Timer | null, now?: number): number;
@@ -12,6 +12,6 @@ interface LabApi {
 declare global {
   interface Window {
     STREAM_STATE?: State;
-    Lab: LabApi;
+    Session: SessionApi;
   }
 }

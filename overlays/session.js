@@ -5,7 +5,7 @@
 (() => {
   const POLL_MS = 2000;
 
-  /** @type {Window["Lab"]["watchState"]} */
+  /** @type {Window["Session"]["watchState"]} */
   function watchState(onState) {
     const load = () => {
       const script = document.createElement("script");
@@ -24,12 +24,12 @@
     setInterval(load, POLL_MS);
   }
 
-  /** @type {Window["Lab"]["remainingMs"]} */
+  /** @type {Window["Session"]["remainingMs"]} */
   function remainingMs(timer, now = Date.now()) {
     return timer ? Math.max(0, timer.endsAt - now) : 0;
   }
 
-  /** @type {Window["Lab"]["formatClock"]} */
+  /** @type {Window["Session"]["formatClock"]} */
   function formatClock(ms) {
     const total = Math.ceil(ms / 1000);
     const m = Math.floor(total / 60);
@@ -37,12 +37,12 @@
     return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   }
 
-  /** @type {Window["Lab"]["$"]} */
+  /** @type {Window["Session"]["$"]} */
   function $(id) {
     const node = document.getElementById(id);
     if (!node) throw new Error(`Missing #${id}`);
     return node;
   }
 
-  window.Lab = { watchState, remainingMs, formatClock, $ };
+  window.Session = { watchState, remainingMs, formatClock, $ };
 })();

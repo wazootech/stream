@@ -60,7 +60,7 @@ test("timer: rejects non-positive and non-numeric minutes", () => {
 
 test("break defaults to five minutes", () => {
   const { state } = run(["break"]);
-  assert.equal(state.timer?.label, "Lab break");
+  assert.equal(state.timer?.label, "Break");
   assert.equal(state.timer?.durationMs, 5 * 60_000);
 });
 
@@ -78,10 +78,10 @@ test("predictions: settle updates the score, needs one on the air", () => {
 });
 
 test("reset clears the session but keeps the title", () => {
-  let { state } = run(["title", "Mad Lab"]);
+  let { state } = run(["title", "Late Night"]);
   ({ state } = run(["goal", "ship it"], state));
   ({ state } = run(["reset"], state));
-  assert.equal(state.title, "Mad Lab");
+  assert.equal(state.title, "Late Night");
   assert.equal(state.goal, "");
 });
 
