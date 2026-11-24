@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HUD</title>
+    <link rel="stylesheet" href="session.css" />
+    <style>
+      /* ?layout=sidebar (480x810, default) or ?layout=compact (1920x120). */
+      .hud {
+        height: 100vh;
+        padding: 22px;
+        background: var(--panel);
+        border-left: 2px solid var(--line);
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 22px;
+      }
+      #goal {
+        margin-top: 8px;
+        font-size: 24px;
+        line-height: 1.25;
+      }
+      .timer .clock {
+        font-size: 64px;
+        margin: 6px 0 12px;
+      }
+      #timer-label {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .tasks {
+        margin-top: 10px;
+        font-size: 17px;
+      }
+      #prediction {
+        margin-top: 8px;
+        font-size: 16px;
+        color: var(--text);
+      }
+      #score {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      body[data-layout="compact"] .hud {
+        grid-template-rows: none;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 40px;
+        padding: 0 40px;
+        border-left: 0;
+        border-top: 2px solid var(--line);
+      }
+      body[data-layout="compact"] #goal {
+        font-size: 28px;
+        margin-top: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      body[data-layout="compact"] .timer .clock {
+        font-size: 56px;
+        margin: 0;
+      }
+      body[data-layout="compact"] .timer .bar,
+      body[data-layout="compact"] .tasks-section,
+      body[data-layout="compact"] .predict h2,
+      body[data-layout="compact"] #prediction {
+        display: none;
+      }
+      body[data-layout="compact"] #score {
+        margin: 0;
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hud">
+      <header>
+        <span class="tag">On the bench</span>
+        <h1 id="goal"></h1>
+      </header>
+
+      <section class="timer" id="timer">
+        <div id="timer-label"></div>
+        <div class="clock" id="clock">--:--</div>
+        <div class="bar"><i id="bar"></i></div>
+      </section>
+
+      <section class="tasks-section">
+        <h2>Tasks</h2>
+        <ul class="tasks" id="tasks"></ul>
+      </section>
+
+      <section class="predict">
+        <h2>Prediction</h2>
+        <p id="prediction"></p>
+        <div id="score"></div>
+      </section>
+    </main>
+
+    <script src="session.js"></script>
+    <script src="hud.js"></script>
+  </body>
+</html>
