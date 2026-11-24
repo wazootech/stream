@@ -1,0 +1,7 @@
+node_modules
+dist
+overlays/state.js
+overlays/state.json
+
+# Shared org workflow, kept byte-identical across repos.
+.github/workflows/code-health.yml

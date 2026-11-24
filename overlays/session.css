@@ -6,8 +6,7 @@
   --muted: #b0b0b1;
   --accent: #ff8c00;
   --warn: #ffaa00;
-  font-family: "IBM Plex Mono", "Cascadia Code", Consolas, ui-monospace,
-    monospace;
+  font-family: "IBM Plex Mono", "Cascadia Code", Consolas, ui-monospace, monospace;
 }
 
 * {

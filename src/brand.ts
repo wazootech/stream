@@ -9,4 +9,4 @@ export const BRAND = {
   collectionFile: "wazoo-stream.scenes.json",
   /** Backdrop color behind the scenes (Wazoo "void"), as [r, g, b]. */
   backdropRgb: [0x04, 0x04, 0x04],
-} as const;
+} as const
