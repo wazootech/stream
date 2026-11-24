@@ -41,14 +41,21 @@ test("every scene item points at a real source, with unique ids per scene", () =
 
 test("browser sources are file:// pages under the overlays directory", () => {
   const browsers = collection.sources.filter((s) => s.id === "browser_source")
-  assert.equal(browsers.length, 5)
+  assert.equal(browsers.length, 6)
   for (const b of browsers) {
     const { url } = b.settings as { url: string }
     // Windows resolves "/work" to "C:/work", so don't pin the drive prefix.
     assert.match(
       url,
-      /^file:\/\/\/(?:[A-Za-z]:\/)?work\/stream\/overlays\/(hud|screen)\.html\?/,
+      /^file:\/\/\/(?:[A-Za-z]:\/)?work\/stream\/overlays\/(hud|screen|alerts)\.html(?:\?|$)/,
     )
+  }
+})
+
+test("the Alerts layer is on top of every scene", () => {
+  for (const { name } of collection.scene_order) {
+    const { items } = byName.get(name)!.settings as { items: { name: string }[] }
+    assert.equal(items.at(-1)?.name, "Alerts", name)
   }
 })
 

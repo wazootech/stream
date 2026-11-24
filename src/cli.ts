@@ -1,11 +1,5 @@
-import {
-  applyCommand,
-  describe,
-  loadState,
-  saveState,
-  UsageError,
-  USAGE,
-} from "./state.ts"
+import { applyCommand, describe, USAGE } from "./commands.ts"
+import { loadState, saveState, UsageError } from "./state.ts"
 
 const argv = process.argv.slice(2)
 
