@@ -42,6 +42,10 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 | **Break**         | Big countdown plus a rotating "stand up, drink water" nudge.   |
 | **Ending**        | Session recap: finished tasks and prediction score.            |
 
+An **Alerts** layer sits on top of all five scenes and shows follow, sub, gift, raid,
+and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
+`npm run session -- alert ...`; it doesn't watch Twitch yet.
+
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
 
@@ -54,6 +58,7 @@ npm run session -- timer 45 "Block 1"
 npm run session -- predict "The import works first try"
 npm run session -- predict hit
 npm run session -- task done 1
+npm run session -- alert follow Ada
 npm run session -- break           # 5 minutes, then switch to Break
 npm run session -- status
 ```
@@ -71,6 +76,8 @@ Run `npm run session -- help` for everything. A shell alias like
 - [`docs/when-stuck.md`](docs/when-stuck.md): what to say when you have nothing to say.
 - [`docs/go-live-checklist.md`](docs/go-live-checklist.md): before, during, and after.
 - [`docs/channel-panels.md`](docs/channel-panels.md): about, schedule, and chat roles.
+- [`docs/alerts.md`](docs/alerts.md): follow, sub, gift, raid, and cheer cards, and how
+  to rehearse them.
 
 ## Development
 

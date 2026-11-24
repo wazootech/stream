@@ -7,6 +7,8 @@
       collection starts with it muted.)
 - [ ] Speak into the mic and check desktop audio sits clearly below your voice.
 - [ ] Webcam and Display sources show the right devices.
+- [ ] `npm run session -- alert test` plays five cards in OBS, then
+      `npm run session -- alert clear`.
 - [ ] Notifications off: phone silent, OS Do Not Disturb on, chat apps closed.
 - [ ] A separate browser profile for streaming, with only what you need open.
 - [ ] Session plan filled in and loaded into the HUD (see
