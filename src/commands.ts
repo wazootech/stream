@@ -1,5 +1,6 @@
 import { requireText } from "./args.ts"
 import { alertCommand } from "./commands/alerts.ts"
+import { musicCommand } from "./commands/music.ts"
 import { predictCommand } from "./commands/predict.ts"
 import { taskCommand } from "./commands/tasks.ts"
 import { breakCommand, timerCommand } from "./commands/timer.ts"
@@ -32,6 +33,8 @@ export function applyCommand(
       return predictCommand(state, rest)
     case "alert":
       return alertCommand(state, rest, now)
+    case "music":
+      return musicCommand(state, rest)
     case "reset":
       return {
         state: { ...defaultState(), title: state.title, updatedAt: now },
@@ -78,6 +81,8 @@ export const USAGE = `npm run session -- <command>
   alert <kind> <name> [detail]
                           Show a follow, sub, gift, raid, or cheer alert
   alert test | clear      Queue one of each to rehearse, or clear the list
-  title <text>            Rename the stream title shown on the overlays
+  music <artist - title>  Show what's playing on the waiting and break screens
+  music off               Hide the music line
+  title <text>           Rename the stream title shown on the overlays
   reset                   Clear the session (keeps the title)
   status                  Print the current state`

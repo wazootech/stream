@@ -42,6 +42,8 @@ export interface State {
   predictions: Predictions
   /** The most recent alerts, oldest first. The overlay plays new ones. */
   alerts: Alert[]
+  /** What's playing ("Artist - Title"), shown on the waiting and break screens. */
+  music: string | null
   updatedAt: number
 }
 
@@ -73,6 +75,7 @@ export function defaultState(): State {
     timer: null,
     predictions: { current: null, hits: 0, total: 0 },
     alerts: [],
+    music: null,
     updatedAt: Date.now(),
   }
 }

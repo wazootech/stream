@@ -46,6 +46,11 @@ An **Alerts** layer sits on top of all five scenes and shows follow, sub, gift, 
 and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
 `npm run session -- alert ...`; it doesn't watch Twitch yet.
 
+A **Music** source plays on Starting Soon and Break only, on audio track 1 so it stays
+out of the Twitch VOD track. Point it at a licensed file;
+`npm run session -- music "Artist - Title"` shows the track on screen (see
+[`docs/music.md`](docs/music.md)).
+
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
 
@@ -78,6 +83,8 @@ Run `npm run session -- help` for everything. A shell alias like
 - [`docs/channel-panels.md`](docs/channel-panels.md): about, schedule, and chat roles.
 - [`docs/alerts.md`](docs/alerts.md): follow, sub, gift, raid, and cheer cards, and how
   to rehearse them.
+- [`docs/music.md`](docs/music.md): background music for waiting and breaks, with the
+  license caveats.
 
 ## Development
 
