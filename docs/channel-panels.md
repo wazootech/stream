@@ -5,7 +5,8 @@ parts.
 
 ## About
 
-> Ethan from Wazoo. I build open source tools in public: [what you build].
+> Ethan from Wazoo. World models as a service for AI agents, built in public:
+> [what you build].
 > Live [days/times]. Pull up a stool.
 >
 > Code: https://github.com/wazootech

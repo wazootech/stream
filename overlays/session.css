@@ -1,12 +1,12 @@
 :root {
-  --bg: #0e1116;
-  --panel: rgba(18, 22, 29, 0.92);
-  --line: #263041;
-  --text: #e8edf5;
-  --muted: #8b97ab;
-  --accent: #FF8C00;
-  --warn: #ffb347;
-  font-family: "Cascadia Code", "JetBrains Mono", Consolas, ui-monospace,
+  --bg: #040404;
+  --panel: rgba(15, 15, 15, 0.92);
+  --line: #2a2a2a;
+  --text: #ffffff;
+  --muted: #b0b0b1;
+  --accent: #ff8c00;
+  --warn: #ffaa00;
+  font-family: "IBM Plex Mono", "Cascadia Code", Consolas, ui-monospace,
     monospace;
 }
 

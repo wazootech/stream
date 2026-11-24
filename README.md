@@ -64,6 +64,8 @@ Run `npm run session -- help` for everything. A shell alias like
 
 ## Docs
 
+- [`docs/persona.md`](docs/persona.md): who Ethan from Wazoo is, what's on the
+  bench, and recurring bits.
 - [`docs/session-plan.md`](docs/session-plan.md): fill-in template for the two
   minutes before you go live.
 - [`docs/when-stuck.md`](docs/when-stuck.md): what to say when you have nothing

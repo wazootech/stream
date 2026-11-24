@@ -162,7 +162,7 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
   const SIDE = 480; // right-hand column in the main layout
 
   const backdrop = source("color_source_v3", "Backdrop", {
-    color: abgr(0x0e, 0x11, 0x16),
+    color: abgr(...BRAND.backdropRgb),
     width: W,
     height: H,
   });
