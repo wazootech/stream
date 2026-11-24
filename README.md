@@ -1,10 +1,9 @@
 # stream
 
 OBS scenes, live overlays, and session templates for the Wazoo stream.
-7d
+
 Owner: [@EthanThatOneKid](https://github.com/EthanThatOneKid). Set up, check,
 test, and build with `npm ci && npm run check && npm test && npm run build`.
-
 
 The overlays show what's on the bench, a countdown, a task checklist,
 and a running prediction score. A tiny CLI updates them from the terminal you're
