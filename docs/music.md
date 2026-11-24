@@ -1,6 +1,6 @@
 # Music
 
-Background music for the dead stretches: waiting before you go live, and
+Background music for the dead stretches: waiting before you go live, and during
 breaks. Spoken-word segments stay music-free so your voice is the show.
 
 ## Read this first: the license gap
