@@ -1,6 +1,6 @@
 # Music
 
-Background music for the dead stretches: waiting before you go live, and lab
+Background music for the dead stretches: waiting before you go live, and
 breaks. Spoken-word segments stay music-free so your voice is the show.
 
 ## Read this first: the license gap
@@ -51,10 +51,10 @@ countdown runs.
 | 2   | Time Lapse    | Steady, easy to talk over |
 | 3   | Xenogenesis   | Builds                |
 | 4   | Unity         | Peak energy           |
-| 5   | Jackpot       | Playful, fits the lab |
+| 5   | Jackpot       | Playful |
 | 6   | Infinite Power | Closer into the stream |
 
-### Lab Break (calm, 5 minutes)
+### Break (calm, 5 minutes)
 
 Slower, so you can stand, stretch, and drink water without a wall of sound.
 
@@ -81,7 +81,7 @@ skip them unless you've confirmed they're covered.
   Twitch uses for the VOD. This keeps it live but out of saved VODs.
 - Keep it well below the mic. A level around -30 to -24 dB under your voice
   works for a bed.
-- Mute it when you start talking in Lab or Focus.
+- Mute it when you start talking in Main or Focus.
 
 The scene collection from `npm run build` does not include a music source yet.
 Add it by hand until it's generated.
