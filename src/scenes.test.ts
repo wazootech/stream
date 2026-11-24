@@ -59,6 +59,20 @@ test("the Alerts layer is on top of every scene", () => {
   }
 })
 
+test("music plays only on Starting Soon and Break, on track 1 only", () => {
+  const withMusic = collection.scene_order
+    .map(({ name }) => name)
+    .filter((name) => {
+      const { items } = byName.get(name)!.settings as { items: { name: string }[] }
+      return items.some((i) => i.name === "Music")
+    })
+  assert.deepEqual(withMusic, ["Starting Soon", "Break"])
+
+  const music = byName.get("Music") as { mixers: number; volume: number }
+  assert.equal(music.mixers, 1, "track 1 only keeps it off the VOD track")
+  assert.ok(music.volume < 0.5)
+})
+
 test("the mic is live and filtered, desktop audio sits under it", () => {
   const mic = collection.AuxAudioDevice1 as {
     muted: boolean

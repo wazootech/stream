@@ -46,6 +46,11 @@ An **Alerts** layer sits on top of all five scenes and shows follow, sub, gift, 
 and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
 `npm run session -- alert ...`; it doesn't watch Twitch yet.
 
+A **Music** source plays on Starting Soon and Break only, on audio track 1 so it stays
+out of the Twitch VOD track. Point it at a licensed file;
+`npm run session -- music "Artist - Title"` shows the track on screen (see
+[`docs/music.md`](docs/music.md)).
+
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
 

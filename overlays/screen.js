@@ -35,6 +35,10 @@
     $("title").textContent = state?.title || "Wazoo Live"
     const tasks = state?.tasks ?? []
     const hasTimer = !!state?.timer
+    // Music plays on the waiting and break scenes, so only they show it.
+    const track = mode === "ending" ? null : state?.music
+    $("music").textContent = track ? `Now playing: ${track}` : ""
+    $("music").hidden = !track
 
     if (mode === "starting") {
       $("headline").textContent = "Starting soon"

@@ -1,7 +1,7 @@
 import { join } from "node:path"
 import { pathToFileURL } from "node:url"
 import { BRAND } from "./brand.ts"
-import { audio, micFilters } from "./audio.ts"
+import { audio, micFilters, musicSource } from "./audio.ts"
 import { abgr, scene, source } from "./obs.ts"
 import type { Json, Place } from "./obs.ts"
 
@@ -63,11 +63,14 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
   // Follow, sub, gift, raid, and cheer alerts. Transparent, so it sits on top
   // of every scene and only draws while an alert is playing.
   const alerts = browser("Alerts", page("alerts.html"), W, H)
+  // Background music for the waiting and break scenes only.
+  const music = musicSource()
 
   const layers: Record<string, [Json, Place][]> = {
     "Starting Soon": [
       [backdrop, full],
       [starting, full],
+      [music, full],
     ],
     Main: [
       [backdrop, full],
@@ -83,6 +86,7 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     Break: [
       [backdrop, full],
       [onBreak, full],
+      [music, full],
     ],
     Ending: [
       [backdrop, full],
@@ -104,6 +108,7 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     onBreak,
     ending,
     alerts,
+    music,
   ]
 
   return {
