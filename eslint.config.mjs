@@ -21,4 +21,9 @@ export default tseslint.config(
     files: ["overlays/**/*.js"],
     languageOptions: { sourceType: "script", globals: globals.browser },
   },
+  {
+    // The dashboard page is served over http, so it can use ES modules.
+    files: ["dashboard/**/*.js"],
+    languageOptions: { globals: globals.browser },
+  },
 )

@@ -12,6 +12,9 @@ OBS scenes, overlays, and session templates for the Wazoo stream. See
   where ES modules and `fetch` are blocked. Keep them classic scripts with
   `// @ts-check` and JSDoc types, and share types via `overlays/globals.d.ts` and
   `src/state.ts`.
+- **The dashboard page is plain JS too.** `dashboard/*.js` are ES modules checked the
+  same way, served by `src/dashboard.ts` on loopback only. Keep its Host, Origin,
+  content-type, and body-size checks, and add any new file to `src/dashboard/static.ts`.
 - **No machine-specific data in git.** The scene collection embeds absolute paths, so it
   is generated into `dist/` (gitignored) by `npm run build`. Live state
   (`overlays/state.js`, `state.json`) is gitignored too. This repo is public.

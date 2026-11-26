@@ -1,0 +1,159 @@
+/* A narrow OBS dock (about 300-400px). Colors come from session.css. */
+html,
+body {
+  overflow: auto; /* session.css hides it for the overlays */
+  background: var(--bg);
+  font-size: 14px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#message {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  max-height: 30vh;
+  overflow: auto;
+  padding: 8px 10px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+#message.error {
+  color: var(--warn);
+}
+
+main,
+section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+main {
+  padding: 10px;
+}
+
+section {
+  padding: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.now {
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.clock {
+  font-size: 42px;
+}
+
+input,
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 7px 9px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+
+.row input {
+  flex: 1 1 8ch;
+  min-width: 0;
+}
+
+.row input.minutes {
+  flex: 0 0 9ch;
+}
+
+.pair,
+.confirm [data-armed] {
+  display: grid;
+  gap: 6px;
+}
+
+.pair {
+  grid-template-columns: 1fr 1fr;
+}
+
+.confirm {
+  display: grid;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover:enabled {
+  border-color: var(--accent);
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button.primary {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+button.danger {
+  color: var(--bg);
+  background: var(--warn);
+  border-color: var(--warn);
+  font-weight: 700;
+}
+
+/* The [ ] and [x] marks come from session.css. */
+.tasks li {
+  grid-template-columns: 3ch minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.tasks li.empty {
+  grid-template-columns: 3ch minmax(0, 1fr);
+}
+
+.tasks .toggle {
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.tasks li.done .toggle {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+pre {
+  margin: 0;
+  font: inherit;
+  font-size: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
