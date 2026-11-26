@@ -7,7 +7,7 @@
       collection starts with it muted.)
 - [ ] Speak into the mic and check desktop audio sits clearly below your voice.
 - [ ] Webcam and Display sources show the right devices.
-- [ ] `npm run session -- alert test` plays five cards in OBS, then
+- [ ] `npm run session -- alert test` plays seven cards in OBS, then
       `npm run session -- alert clear`.
 - [ ] Music source points at the StreamBeats playlist (see [`music.md`](music.md)).
 - [ ] OBS records in Hybrid MP4 or MKV with tracks 1 and 2, and the disk has room.
@@ -17,7 +17,7 @@
       [`session-plan.md`](session-plan.md)).
 - [ ] Water within reach. Fidget tool within reach.
 - [ ] **Manage Broadcast** in OBS: title as `<what> | Wazoo`, category, visibility, and
-      the made-for-kids answer. Use **Unlisted** for tests.
+      the made-for-kids answer. For tests, see [`test-stream.md`](test-stream.md).
 - [ ] Start on **Starting Soon** with a 5 minute timer
       (`npm run session -- timer 5 "Starting soon"`).
 

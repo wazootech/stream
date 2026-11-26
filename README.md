@@ -46,9 +46,10 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 | **Game**          | One game window, a small webcam, and the goal and timer bar.   |
 | **Break**         | Big countdown plus a rotating "stand up, drink water" nudge.   |
 
-An **Alerts** layer sits on top of all five scenes and shows follow, sub, gift, raid,
-and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
-`npm run session -- alert ...`, or what `npm run youtube` reads from your channel.
+An **Alerts** layer sits on top of all five scenes and shows subscriber, member, gifted
+membership, and Super Chat cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what
+you queue with `npm run session -- alert ...`, or what `npm run youtube` reads from your
+channel.
 
 A **Music** source plays on Starting Soon and Break only, on audio track 1. We use a
 free StreamBeats album (see [`docs/music.md`](docs/music.md)).
@@ -98,8 +99,8 @@ it. If port 4747 is busy, run `npm run dashboard -- --port 5000`.
 - [`docs/go-live-checklist.md`](docs/go-live-checklist.md): before, during, and after.
 - [`docs/channel-panels.md`](docs/channel-panels.md): description, links, schedule, and
   rules.
-- [`docs/alerts.md`](docs/alerts.md): follow, sub, gift, raid, and cheer cards, and how
-  to rehearse them.
+- [`docs/alerts.md`](docs/alerts.md): YouTube event cards, the live bridge, and how to
+  rehearse them.
 - [`docs/simulcasting.md`](docs/simulcasting.md): Twitch as a possible second target
   later.
 - [`docs/music.md`](docs/music.md): background music for waiting and breaks, with the
