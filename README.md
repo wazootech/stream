@@ -81,20 +81,22 @@ Run `npm run session -- help` for everything. A shell alias like
 
 ## Docs
 
-- [`docs/persona.md`](docs/persona.md): who Ethan from Wazoo is, what's on the bench,
-  and recurring bits.
+- [`docs/persona.md`](docs/persona.md): who Ethan from Wazoo is, what the stream is, and
+  what's on the bench.
 - [`docs/session-plan.md`](docs/session-plan.md): fill-in template for the two minutes
   before you go live.
 - [`docs/when-stuck.md`](docs/when-stuck.md): what to say when you have nothing to say.
 - [`docs/go-live-checklist.md`](docs/go-live-checklist.md): before, during, and after.
-- [`docs/channel-panels.md`](docs/channel-panels.md): description, schedule, and chat
-  roles.
+- [`docs/channel-panels.md`](docs/channel-panels.md): description, links, schedule, and
+  rules.
 - [`docs/alerts.md`](docs/alerts.md): follow, sub, gift, raid, and cheer cards, and how
   to rehearse them.
 - [`docs/simulcasting.md`](docs/simulcasting.md): Twitch as a possible second target
   later.
 - [`docs/music.md`](docs/music.md): background music for waiting and breaks, with the
   license notes.
+- [`docs/chat-commands.md`](docs/chat-commands.md): Nightbot commands in YouTube chat.
+- [`docs/test-stream.md`](docs/test-stream.md): how to test privately.
 
 ## Development
 
