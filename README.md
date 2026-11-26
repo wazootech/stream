@@ -44,9 +44,8 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 | **Main**          | Default scene: screen, webcam, and the HUD sidebar.            |
 | **Focus**         | Screen-first, with a slim goal and timer bar along the bottom. |
 | **Break**         | Big countdown plus a rotating "stand up, drink water" nudge.   |
-| **Ending**        | Session recap: finished tasks and prediction score.            |
 
-An **Alerts** layer sits on top of all five scenes and shows follow, sub, gift, raid,
+An **Alerts** layer sits on top of all four scenes and shows follow, sub, gift, raid,
 and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
 `npm run session -- alert ...`; it doesn't watch YouTube.
 

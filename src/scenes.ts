@@ -59,7 +59,6 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     H,
   )
   const onBreak = browser("Screen: Break", page("screen.html", "?mode=break"), W, H)
-  const ending = browser("Screen: Ending", page("screen.html", "?mode=ending"), W, H)
   // Follow, sub, gift, raid, and cheer alerts. Transparent, so it sits on top
   // of every scene and only draws while an alert is playing.
   const alerts = browser("Alerts", page("alerts.html"), W, H)
@@ -88,10 +87,6 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
       [onBreak, full],
       [music, full],
     ],
-    Ending: [
-      [backdrop, full],
-      [ending, full],
-    ],
   }
   const scenes = Object.entries(layers).map(([name, stack]) =>
     scene(name, [...stack, [alerts, full]]),
@@ -106,7 +101,6 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     hudBar,
     starting,
     onBreak,
-    ending,
     alerts,
     music,
   ]

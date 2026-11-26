@@ -2,7 +2,7 @@
 ;(() => {
   const { $, watchState, remainingMs, formatClock } = window.Session
   const raw = new URLSearchParams(location.search).get("mode")
-  const mode = raw === "break" || raw === "ending" ? raw : "starting"
+  const mode = raw === "break" ? raw : "starting"
   document.body.dataset.mode = mode
 
   // A rotating nudge for breaks, so moving is part of the show.
@@ -36,7 +36,7 @@
     const tasks = state?.tasks ?? []
     const hasTimer = !!state?.timer
     // Music plays on the waiting and break scenes, so only they show it.
-    const track = mode === "ending" ? null : state?.music
+    const track = state?.music
     $("music").textContent = track ? `Now playing: ${track}` : ""
     $("music").hidden = !track
 
@@ -47,27 +47,12 @@
       renderTasks(tasks)
       $("list").hidden = tasks.length === 0
       $("clock").hidden = !hasTimer
-    } else if (mode === "break") {
+    } else {
       $("headline").textContent = "Break"
       const nudge = Math.floor(Date.now() / 15000) % BREAK_NUDGES.length
       $("subline").textContent = BREAK_NUDGES[nudge]
       $("list").hidden = true
       $("clock").hidden = !hasTimer
-    } else {
-      const done = tasks.filter((t) => t.done)
-      const p = state?.predictions
-      $("headline").textContent = "Session recap"
-      $("subline").textContent = [
-        `${done.length} of ${tasks.length} tasks finished`,
-        p && p.total > 0 ? `predictions called ${p.hits}/${p.total}` : "",
-        "thanks for watching",
-      ]
-        .filter(Boolean)
-        .join(" · ")
-      $("list-title").textContent = "Completed"
-      renderTasks(done)
-      $("list").hidden = done.length === 0
-      $("clock").hidden = true
     }
   }
 

@@ -12,7 +12,7 @@ test("the collection survives a JSON round trip", () => {
 test("every scene in scene_order exists and is a scene", () => {
   assert.deepEqual(
     collection.scene_order.map((s) => s.name),
-    ["Starting Soon", "Main", "Focus", "Break", "Ending"],
+    ["Starting Soon", "Main", "Focus", "Break"],
   )
   for (const { name } of collection.scene_order) {
     assert.equal(byName.get(name)?.id, "scene", name)
@@ -41,7 +41,7 @@ test("every scene item points at a real source, with unique ids per scene", () =
 
 test("browser sources are file:// pages under the overlays directory", () => {
   const browsers = collection.sources.filter((s) => s.id === "browser_source")
-  assert.equal(browsers.length, 6)
+  assert.equal(browsers.length, 5)
   for (const b of browsers) {
     const { url } = b.settings as { url: string }
     // Windows resolves "/work" to "C:/work", so don't pin the drive prefix.

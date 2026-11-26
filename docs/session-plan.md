@@ -43,5 +43,4 @@ naturally, helps latecomers, and gives you a clean place to take a break.
 
 ## Closing
 
-Switch to **Ending**, read the session recap, say what the next session is, and stop.
-Don't trail off.
+Recap the session, say what the next one is, and stop the stream. Don't trail off.
