@@ -12,7 +12,7 @@ test("the collection survives a JSON round trip", () => {
 test("every scene in scene_order exists and is a scene", () => {
   assert.deepEqual(
     collection.scene_order.map((s) => s.name),
-    ["Starting Soon", "Main", "Focus", "Break"],
+    ["Starting Soon", "Main", "Focus", "Game", "Break"],
   )
   for (const { name } of collection.scene_order) {
     assert.equal(byName.get(name)?.id, "scene", name)
@@ -79,6 +79,15 @@ test("the backdrop hides the Music source, so cover art never shows", () => {
     const order = items.map((i) => i.name)
     assert.ok(order.indexOf("Music") < order.indexOf("Backdrop"), name)
   }
+})
+
+test("the Game scene captures the game window, not the whole display", () => {
+  const { items } = byName.get("Game")!.settings as { items: { name: string }[] }
+  const names = items.map((i) => i.name)
+  assert.ok(names.includes("Game Window"))
+  assert.ok(!names.includes("Display"))
+  const game = byName.get("Game Window")!.settings as { window: string }
+  assert.match(game.window, /:Wow\.exe$/)
 })
 
 test("the mic is live and filtered, desktop audio sits under it", () => {

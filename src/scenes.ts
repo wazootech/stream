@@ -2,6 +2,7 @@ import { join } from "node:path"
 import { pathToFileURL } from "node:url"
 import { BRAND } from "./brand.ts"
 import { audio, micFilters, musicSource } from "./audio.ts"
+import { gameSource } from "./game.ts"
 import { abgr, scene, source } from "./obs.ts"
 import type { Json, Place } from "./obs.ts"
 
@@ -50,6 +51,7 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     capture_cursor: true,
   })
   const webcam = source("dshow_input", "Webcam", {})
+  const game = gameSource()
   const hud = browser("HUD", page("hud.html", "?layout=sidebar"), SIDE, H - 270)
   const hudBar = browser("HUD Bar", page("hud.html", "?layout=compact"), W, 120)
   const starting = browser(
@@ -83,6 +85,12 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
       [display, { x: 0, y: 0, w: W, h: H - 120 }],
       [hudBar, { x: 0, y: H - 120, w: W, h: 120 }],
     ],
+    Game: [
+      [backdrop, full],
+      [game, { x: 0, y: 0, w: W, h: H - 120 }],
+      [webcam, { x: W - 408, y: H - 360, w: 384, h: 216 }],
+      [hudBar, { x: 0, y: H - 120, w: W, h: 120 }],
+    ],
     Break: [
       [music, full],
       [backdrop, full],
@@ -98,6 +106,7 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     backdrop,
     display,
     webcam,
+    game,
     hud,
     hudBar,
     starting,
