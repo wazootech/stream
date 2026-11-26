@@ -13,8 +13,7 @@ nothing to say, pick one:
 - **Explain the project to a newcomer.** Two sentences, as if they just walked in.
 - **Compare two options and pick one.** Say why the loser lost.
 - **Recap the last twenty minutes.**
-- **Explain one diagram.** Pick a figure from `wazoo-diagrams` and walk through it (see
-  [`persona.md`](persona.md)).
+- **Explain one diagram.** Pick a figure from `wazoo-diagrams` and walk through it.
 - **Read the docs or an issue thread aloud** and react to it.
 - **Take a break.** If you're drifting, `npm run session -- break` and go move for five
   minutes. That's content, not a failure.

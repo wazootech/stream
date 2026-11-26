@@ -2,37 +2,31 @@
 
 The YouTube channel is [Wazoo Ethan (@WazooEthan)](https://www.youtube.com/@WazooEthan).
 
-The persona for this stream, built only from Wazoo's public material (the org profile,
-the platform map, the company handbook, and the design system). Everything marked
-_suggestion_ is an idea, not canon.
+## The stream
 
-## The premise in one breath
+In my own words:
 
-You are **Ethan, founder of Wazoo**, building **world models as a service for AI
-agents** in public. Wazoo is a small team of people and AI agents, and the stream is
-where the work happens: real repos, real reviews, real mistakes.
+> we are just chilling/chatting about open source programming and solving problems and
+> tackling issues/PRs and reviewing code related to the wazootech org on github showing
+> off modern software engineering best practices and growing our community
 
-> "World models as a service for AI agents."
+> oh and sometimes i play video games on the screen while waiting between automations to
+> run
 
-## The persona
+I'm the founder of Wazoo, which builds world models as a service for AI agents. Keep it
+plain and casual.
 
-- **Role:** founder, and the human in the loop. The handbook puts it this way: you
-  approve merges, deploys, purchases, and anything sent on your behalf. That is the
-  show's spine: agents propose, you decide, out loud.
-- **Voice:** developer-first, high-fidelity, slightly quirky (the design system's own
-  words). Explain the real mechanism plainly. Say "I don't know yet" and then find out.
-- **Vibe:** chilling and chatting about open source: solving problems, tackling issues
-  and PRs, reviewing code, showing modern engineering practice, and growing the
-  community. Sometimes a video game fills the wait while automations run.
-- **Operating principle:** Wazoo's tooling runs on Wazoo before it runs on anyone else.
-  Dogfooding is the content.
-- **Look:** dark, Sunset Orange (`#FF8C00`) on near-black, monospaced type (IBM Plex
-  Mono). The overlays already use this palette.
+## Decisions
+
+Made on 2026-11-25:
+
+- **Agent teammates:** say "my agents" on stream, and keep agent teammate names off
+  screen.
+- **Catchphrase:** not yet. We won't force one, and can revisit if one comes from chat.
 
 ## What's on the bench
 
-Public repositories, grouped the way the platform map groups them. Any of these can be a
-session goal.
+Public repositories, grouped the way the platform map groups them.
 
 | Area             | Repos                                                                     |
 | ---------------- | ------------------------------------------------------------------------- |
@@ -49,28 +43,12 @@ session goal.
 The console is in private beta. The map of everything is
 [`wazootech/wazootech`](https://github.com/wazootech/wazootech).
 
-## Vocabulary
+## Look and setup
 
-Use the platform's own words, and define each once per stream for anyone who just
-arrived: **world**, **world model**, **knowledge graph**, **SPARQL**, **control plane**,
-**data plane**, **memory** (for agents). There is no catchphrase yet. Let one come from
-chat.
+The look is dark, with Sunset Orange (`#FF8C00`) on near-black and monospaced type (IBM
+Plex Mono). The overlays use this accent color.
 
-## Recurring bits (suggestions)
-
-Each one maps onto something the kit already does.
-
-- **Human in the loop.** When an agent's PR is ready, read it on stream and say what you
-  are approving and why. A merge you can explain is good content.
-- **With and without memory.** `wazoobench` scores tasks with and without memory. Make a
-  prediction (the HUD scoreboard) about whether context helps on the next task, then
-  check.
-- **`wspace check`.** Open the session with it and close with it, the way the workspace
-  guide says agents do. It is a built-in start and end ritual.
-- **Diagram of the day.** Pick one `wazoo-diagrams` figure and explain it for two
-  minutes. Good for the Starting Soon and Break scenes when you have nothing else to
-  say.
-- **Break.** Stand up. The Break scene is the ritual; no costume needed.
+The hardware list is the `!setup` reply in [`chat-commands.md`](chat-commands.md).
 
 ## On-stream hygiene
 
@@ -79,12 +57,6 @@ Each one maps onto something the kit already does.
 - Keep private repositories and private-beta customer details off screen. If you are
   unsure whether a repo is public, check it first.
 - A leaked credential gets revoked and rotated, not just cut from the VOD.
-
-## Open questions
-
-- **Agent teammates:** whether to name them on stream. The handbook lists them, but it
-  is your call.
-- **Catchphrase:** wait for one to emerge.
 
 ## Sources
 

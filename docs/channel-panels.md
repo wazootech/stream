@@ -2,7 +2,7 @@
 
 The copy published on the YouTube channel,
 [Wazoo Ethan (@WazooEthan)](https://www.youtube.com/@WazooEthan), followed by starting
-points for stream descriptions. Replace the bracketed parts.
+points for the schedule and rules. Replace the bracketed parts.
 
 ## About
 
@@ -38,21 +38,6 @@ is the source for the social accounts.
 
 > [Days] at [time + timezone]. 45 to 90 minutes, one goal per session, breaks every
 > block. Schedule changes are announced in chat.
-
-## How the stream works
-
-> Every session has a goal and a short task list, shown on screen. I predict outcomes
-> out loud, then we find out whether I was right.
-
-## Chat roles
-
-Give chat a part to play. Redeem and command ideas that fit the format:
-
-- **Callers** are anyone in chat. They can call a prediction ("hit or miss?") before
-  it's settled.
-- **Testers** try the thing being built when it's ready.
-- A chat vote to **pick the next task** from the list.
-- A chat vote to **name the prototype**.
 
 ## Rules
 
