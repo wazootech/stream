@@ -21,6 +21,9 @@ where the work happens: real repos, real reviews, real mistakes.
   show's spine: agents propose, you decide, out loud.
 - **Voice:** developer-first, high-fidelity, slightly quirky (the design system's own
   words). Explain the real mechanism plainly. Say "I don't know yet" and then find out.
+- **Vibe:** chilling and chatting about open source: solving problems, tackling issues
+  and PRs, reviewing code, showing modern engineering practice, and growing the
+  community. Sometimes a video game fills the wait while automations run.
 - **Operating principle:** Wazoo's tooling runs on Wazoo before it runs on anyone else.
   Dogfooding is the content.
 - **Look:** dark, Sunset Orange (`#FF8C00`) on near-black, monospaced type (IBM Plex
