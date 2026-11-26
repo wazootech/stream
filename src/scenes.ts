@@ -5,7 +5,7 @@ import { audio, micFilters, musicSource } from "./audio.ts"
 import { abgr, scene, source } from "./obs.ts"
 import type { Json, Place } from "./obs.ts"
 
-/** Canvas the layouts are designed for. Twitch wants 16:9. */
+/** Canvas the layouts are designed for. YouTube wants 16:9. */
 export const CANVAS = { width: 1920, height: 1080 } as const
 
 export interface SceneCollection extends Json {

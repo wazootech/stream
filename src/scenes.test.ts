@@ -69,7 +69,7 @@ test("music plays only on Starting Soon and Break, on track 1 only", () => {
   assert.deepEqual(withMusic, ["Starting Soon", "Break"])
 
   const music = byName.get("Music") as { mixers: number; volume: number }
-  assert.equal(music.mixers, 1, "track 1 only keeps it off the VOD track")
+  assert.equal(music.mixers, 1, "track 1 only keeps track 2 music-free")
   assert.ok(music.volume < 0.5)
 })
 

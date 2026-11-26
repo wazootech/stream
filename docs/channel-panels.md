@@ -1,6 +1,8 @@
-# Channel panels
+# Channel page
 
-Copy-paste starting points for the Twitch channel page. Replace the bracketed parts.
+Copy-paste starting points for the YouTube channel,
+[Wazoo Ethan (@WazooEthan)](https://www.youtube.com/@WazooEthan). Put these in the
+channel and stream descriptions. Replace the bracketed parts.
 
 ## About
 
@@ -26,13 +28,13 @@ Give chat a part to play. Redeem and command ideas that fit the format:
 - **Callers** are anyone in chat. They can call a prediction ("hit or miss?") before
   it's settled.
 - **Testers** try the thing being built when it's ready.
-- A channel point redeem to **pick the next task** from the list.
-- A redeem to **name the prototype**.
+- A chat vote to **pick the next task** from the list.
+- A chat vote to **name the prototype**.
 
 ## Rules
 
 > Be kind, stay on topic, no spoilers for puzzles or games without asking, and no
 > harassment of any kind.
 
-Check the channel art, emotes, and titles against Twitch's Community Guidelines before
+Check the channel art, emotes, and titles against YouTube's Community Guidelines before
 going live.

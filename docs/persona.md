@@ -1,5 +1,7 @@
 # Ethan from Wazoo
 
+The YouTube channel is [Wazoo Ethan (@WazooEthan)](https://www.youtube.com/@WazooEthan).
+
 The persona for this stream, built only from Wazoo's public material (the org profile,
 the platform map, the company handbook, and the design system). Everything marked
 _suggestion_ is an idea, not canon.
@@ -77,7 +79,6 @@ Each one maps onto something the kit already does.
 
 ## Open questions
 
-- **Channel handle:** the name viewers see. Keep your own name visible.
 - **Agent teammates:** whether to name them on stream. The handbook lists them, but it
   is your call.
 - **Catchphrase:** wait for one to emerge.
