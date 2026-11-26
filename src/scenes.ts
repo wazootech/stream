@@ -62,14 +62,15 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
   // Follow, sub, gift, raid, and cheer alerts. Transparent, so it sits on top
   // of every scene and only draws while an alert is playing.
   const alerts = browser("Alerts", page("alerts.html"), W, H)
-  // Background music for the waiting and break scenes only.
+  // Background music for the waiting and break scenes only. It sits under the
+  // opaque backdrop, because audio files with cover art also draw a picture.
   const music = musicSource()
 
   const layers: Record<string, [Json, Place][]> = {
     "Starting Soon": [
+      [music, full],
       [backdrop, full],
       [starting, full],
-      [music, full],
     ],
     Main: [
       [backdrop, full],
@@ -83,9 +84,9 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
       [hudBar, { x: 0, y: H - 120, w: W, h: 120 }],
     ],
     Break: [
+      [music, full],
       [backdrop, full],
       [onBreak, full],
-      [music, full],
     ],
   }
   const scenes = Object.entries(layers).map(([name, stack]) =>

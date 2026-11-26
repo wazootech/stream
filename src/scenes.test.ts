@@ -73,6 +73,14 @@ test("music plays only on Starting Soon and Break, on track 1 only", () => {
   assert.ok(music.volume < 0.5)
 })
 
+test("the backdrop hides the Music source, so cover art never shows", () => {
+  for (const name of ["Starting Soon", "Break"]) {
+    const { items } = byName.get(name)!.settings as { items: { name: string }[] }
+    const order = items.map((i) => i.name)
+    assert.ok(order.indexOf("Music") < order.indexOf("Backdrop"), name)
+  }
+})
+
 test("the mic is live and filtered, desktop audio sits under it", () => {
   const mic = collection.AuxAudioDevice1 as {
     muted: boolean

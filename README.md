@@ -49,10 +49,9 @@ An **Alerts** layer sits on top of all four scenes and shows follow, sub, gift, 
 and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
 `npm run session -- alert ...`; it doesn't watch YouTube.
 
-A **Music** source plays on Starting Soon and Break only, on audio track 1. YouTube
-archives what you stream, so leave it empty until the license is confirmed (see
-[`docs/music.md`](docs/music.md)). `npm run session -- music "Artist - Title"` shows the
-track on screen.
+A **Music** source plays on Starting Soon and Break only, on audio track 1. We use a
+free StreamBeats album (see [`docs/music.md`](docs/music.md)).
+`npm run session -- music "Artist - Title"` shows a label on screen.
 
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
@@ -90,7 +89,7 @@ Run `npm run session -- help` for everything. A shell alias like
 - [`docs/simulcasting.md`](docs/simulcasting.md): Twitch as a possible second target
   later.
 - [`docs/music.md`](docs/music.md): background music for waiting and breaks, with the
-  license caveats.
+  license notes.
 
 ## Development
 
