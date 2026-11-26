@@ -33,7 +33,7 @@
 
 ## After
 
-- [ ] Switch to **Ending** and read the session recap.
+- [ ] Give a quick recap on air before you go offline.
 - [ ] Say when the next session is.
 - [ ] Stop the stream, then stop the recording.
 - [ ] Check that the archive and the local recording both play.

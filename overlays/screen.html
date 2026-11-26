@@ -6,7 +6,7 @@
     <title>Screen</title>
     <link rel="stylesheet" href="session.css" />
     <style>
-      /* ?mode=starting | break | ending (1920x1080). */
+      /* ?mode=starting | break (1920x1080). */
       .screen {
         height: 100vh;
         display: grid;
@@ -51,11 +51,6 @@
       .list .tasks {
         font-size: 28px;
         gap: 12px;
-      }
-      /* On the ending screen every listed task is done; don't strike it out. */
-      body[data-mode="ending"] .tasks li.done {
-        color: var(--text);
-        text-decoration: none;
       }
       [hidden] {
         display: none !important;
