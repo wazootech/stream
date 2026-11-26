@@ -29,6 +29,9 @@ export function authUrl(request: {
     client_id: request.clientId,
     redirect_uri: request.redirectUri,
     response_type: "code",
+    // Always offer the account and channel chooser: a second sign-in is usually
+    // someone fixing a wrong pick, and Google would otherwise reuse the old one.
+    prompt: "select_account consent",
     scope: SCOPE,
     code_challenge: request.challenge,
     code_challenge_method: "S256",

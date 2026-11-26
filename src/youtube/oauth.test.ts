@@ -51,6 +51,7 @@ test("oauth: signs in over loopback with PKCE and read-only scope", async () => 
   const query = consent.searchParams
   assert.equal(query.get("scope"), SCOPE)
   assert.equal(query.get("code_challenge_method"), "S256")
+  assert.equal(query.get("prompt"), "select_account consent")
   assert.match(query.get("redirect_uri") ?? "", /^http:\/\/127\.0\.0\.1:\d+$/)
   assert.equal(consent.href.includes(client.secret), false)
 
