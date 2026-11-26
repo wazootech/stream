@@ -9,19 +9,21 @@
 - [ ] Webcam and Display sources show the right devices.
 - [ ] `npm run session -- alert test` plays five cards in OBS, then
       `npm run session -- alert clear`.
-- [ ] Music source points at a licensed file, and `music` shows the track (see
-      [`music.md`](music.md)).
+- [ ] Music source is empty, or points at a licensed file (see [`music.md`](music.md)).
+- [ ] OBS records in Hybrid MP4 or MKV with tracks 1 and 2, and the disk has room.
 - [ ] Notifications off: phone silent, OS Do Not Disturb on, chat apps closed.
 - [ ] A separate browser profile for streaming, with only what you need open.
 - [ ] Session plan filled in and loaded into the HUD (see
       [`session-plan.md`](session-plan.md)).
 - [ ] Water within reach. Fidget tool within reach.
-- [ ] Stream title set, in the form `<what> | Wazoo`, and category chosen.
+- [ ] **Manage Broadcast** in OBS: title as `<what> | Wazoo`, category, visibility, and
+      the made-for-kids answer. Use **Unlisted** for tests.
 - [ ] Start on **Starting Soon** with a 5 minute timer
       (`npm run session -- timer 5 "Starting soon"`).
 
 ## During
 
+- [ ] **Start Recording** along with **Start Streaming**.
 - [ ] Switch to **Main** and say the plan out loud.
 - [ ] One block at a time: `npm run session -- timer 45 "Block 1"`.
 - [ ] Break at every block end: `npm run session -- break`, then **Break**.
@@ -34,6 +36,7 @@
 - [ ] Switch to **Ending** and read the session recap.
 - [ ] Say when the next session is.
 - [ ] Stop the stream, then stop the recording.
+- [ ] Check that the archive and the local recording both play.
 - [ ] `npm run session -- reset` so the next session starts clean.
 - [ ] Jot down one thing that worked and one thing to change.
 

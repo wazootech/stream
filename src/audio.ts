@@ -3,8 +3,8 @@ import type { Json } from "./obs.ts"
 
 /**
  * Background music: an OBS Media Source you point at a licensed file. It is
- * mixed onto track 1 alone, so it stays out of the Twitch VOD track (track 2),
- * and sits well under the voice.
+ * mixed onto track 1 alone, so track 2 stays music-free for editing, and
+ * sits well under the voice.
  */
 export function musicSource(): Json {
   return source(

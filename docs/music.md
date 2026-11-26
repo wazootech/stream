@@ -9,17 +9,17 @@ TheFatRat's [copyright page](https://www.thefatrat.com/copyright) says every son
 [downloads page](https://www.thefatrat.com/downloads) is free to use and free to
 download, and that everything else is not. But his
 [terms](https://www.thefatrat.com/terms-and-conditions) describe the binding license as
-covering videos uploaded to YouTube. They don't mention live streaming or Twitch, and
-they reserve any other kind of use. Live performance appears only in the non-binding
-overview.
+covering videos uploaded to YouTube. They don't mention live streaming, and they reserve
+any other kind of use. Live performance appears only in the non-binding overview.
 
-So Twitch isn't explicitly covered. The playlist below is a sensible starting point, not
-a cleared one. Before relying on it:
+So live streaming on YouTube isn't explicitly covered, even though the archive ends up
+as a YouTube video. The playlist below is a starting point, not a cleared one. Before
+using it:
 
-1. Use the contact in the Terms page (Section 10) to ask whether live Twitch streams and
-   their VODs are allowed, and keep the reply.
-2. Until you hear back, keep music on its own audio track and out of the VOD (see
-   below).
+1. Use the contact in the Terms page (Section 10) to ask whether live YouTube streams,
+   their archives, and edited clips are allowed, and keep the reply.
+2. Until you hear back, leave the Music source empty. The stream's archive keeps
+   whatever audio you send, music included.
 
 ## Credit line
 
@@ -29,9 +29,10 @@ His terms say the description must carry this line, or the use isn't covered:
 Music: TheFatRat <TITLE> <YouTube link to the song on TheFatRat's channel>
 ```
 
-Spell the name exactly (`TheFatRat`, not "The Fat Rat" or "FatRat"). Put the line in a
-`!music` chat command and in the channel panel, and look up each song's link on his
-channel. Links aren't in this file because they haven't been verified.
+Spell the name exactly (`TheFatRat`, not "The Fat Rat" or "FatRat"). Put the line in the
+stream description and in every edited video that includes the music, and look up each
+song's link on his channel. Links aren't in this file because they haven't been
+verified.
 
 ## The playlist
 
@@ -80,10 +81,10 @@ in Main or Focus.
 - **Pick the file.** Open the Music source's properties and choose a licensed audio
   file. It loops. For a real playlist, swap it for a VLC Video Source (VLC has to be
   installed) with the same name and the same audio settings.
-- **Keep it off the VOD.** The source is mixed onto audio track 1 only, at 25% volume.
-  In **Settings > Stream** (for Twitch), turn on the VOD track so viewers' saved VODs
-  use track 2, which has no music. Check this in **Advanced Audio Properties**: Music
-  should have only track 1 ticked.
+- **Know where it goes.** The source is mixed onto audio track 1 only, at 25% volume.
+  The stream sends track 1 by default. Record tracks 1 and 2 so you can edit with the
+  music-free track 2. In **Advanced Audio Properties**, Music should have only track 1
+  ticked.
 - **Show what's playing** on the waiting and break screens:
 
   ```sh
@@ -92,7 +93,7 @@ in Main or Focus.
   ```
 
   This is the on-screen line only. The full credit with the YouTube link still goes in
-  your channel panel and a `!music` chat command.
+  the video description.
 
 I haven't tested the Music source in OBS itself. If OBS rejects it or the track routing
 looks wrong, fix it by hand and tell me what you see.
@@ -100,8 +101,6 @@ looks wrong, fix it by hand and tell me what you see.
 ## Checklist
 
 - [ ] Every track is on TheFatRat's downloads page
-- [ ] Credit line and `!music` command are set
-- [ ] Reply from the artist's contact on file about Twitch (or music kept off the VOD
-      track)
+- [ ] Credit line is in the stream description
+- [ ] Reply from the artist's contact on file (until then, leave Music empty)
 - [ ] The Music source points at a file, and only track 1 is ticked
-- [ ] Twitch VOD track is on in Settings > Stream

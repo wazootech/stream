@@ -1,6 +1,7 @@
 # stream
 
-OBS scenes, live overlays, and session templates for the Wazoo stream.
+OBS scenes, live overlays, and session templates for the Wazoo stream, live on YouTube
+as [Wazoo Ethan (@WazooEthan)](https://www.youtube.com/@WazooEthan).
 
 Owner: [@EthanThatOneKid](https://github.com/EthanThatOneKid). Set up, check, test, and
 build with
@@ -23,11 +24,14 @@ npm run build        # writes dist/wazoo-stream.scenes.json for this machine
 Then in OBS:
 
 1. **Settings > Video**: set Base and Output resolution to `1920x1080`. The layouts are
-   drawn for 16:9, which is what Twitch expects.
+   drawn for 16:9, which is what YouTube expects.
 2. **Scene Collection > Import**, and choose `dist/wazoo-stream.scenes.json`.
 3. In the **Webcam** source pick your camera; in **Display** pick your screen.
-4. **Docks > Twitch Chat** gives you chat privately, so nothing sits on stream.
-5. Make sure the **Mic/Aux** meter moves and is not muted.
+4. **Settings > Stream**: choose YouTube, **Connect Account**, and pick the **Wazoo
+   Ethan** channel. Open chat from the **Docks** menu so it stays off stream.
+5. **Settings > Output** (Advanced mode): record in Hybrid MP4 or MKV with audio tracks
+   1 and 2. Track 2 has no music, which makes editing clips easier.
+6. Make sure the **Mic/Aux** meter moves and is not muted.
 
 The collection embeds absolute paths to `overlays/`, so re-run `npm run build` and
 re-import if you move the repo. `dist/` is gitignored for that reason.
@@ -44,12 +48,12 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 
 An **Alerts** layer sits on top of all five scenes and shows follow, sub, gift, raid,
 and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
-`npm run session -- alert ...`; it doesn't watch Twitch yet.
+`npm run session -- alert ...`; it doesn't watch YouTube.
 
-A **Music** source plays on Starting Soon and Break only, on audio track 1 so it stays
-out of the Twitch VOD track. Point it at a licensed file;
-`npm run session -- music "Artist - Title"` shows the track on screen (see
-[`docs/music.md`](docs/music.md)).
+A **Music** source plays on Starting Soon and Break only, on audio track 1. YouTube
+archives what you stream, so leave it empty until the license is confirmed (see
+[`docs/music.md`](docs/music.md)). `npm run session -- music "Artist - Title"` shows the
+track on screen.
 
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
@@ -80,9 +84,12 @@ Run `npm run session -- help` for everything. A shell alias like
   before you go live.
 - [`docs/when-stuck.md`](docs/when-stuck.md): what to say when you have nothing to say.
 - [`docs/go-live-checklist.md`](docs/go-live-checklist.md): before, during, and after.
-- [`docs/channel-panels.md`](docs/channel-panels.md): about, schedule, and chat roles.
+- [`docs/channel-panels.md`](docs/channel-panels.md): description, schedule, and chat
+  roles.
 - [`docs/alerts.md`](docs/alerts.md): follow, sub, gift, raid, and cheer cards, and how
   to rehearse them.
+- [`docs/simulcasting.md`](docs/simulcasting.md): Twitch as a possible second target
+  later.
 - [`docs/music.md`](docs/music.md): background music for waiting and breaks, with the
   license caveats.
 
