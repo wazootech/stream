@@ -61,7 +61,7 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     H,
   )
   const onBreak = browser("Screen: Break", page("screen.html", "?mode=break"), W, H)
-  // Follow, sub, gift, raid, and cheer alerts. Transparent, so it sits on top
+  // Subscriber, member, and Super Chat alerts. Transparent, so it sits on top
   // of every scene and only draws while an alert is playing.
   const alerts = browser("Alerts", page("alerts.html"), W, H)
   // Background music for the waiting and break scenes only. It sits under the

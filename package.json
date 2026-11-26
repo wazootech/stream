@@ -12,6 +12,7 @@
     "build": "node src/build.ts",
     "session": "node src/cli.ts",
     "dashboard": "node src/dashboard.ts",
+    "youtube": "node src/youtube/main.ts",
     "check": "tsc --noEmit",
     "test": "node --test \"src/**/*.test.ts\"",
     "format": "prettier --write .",

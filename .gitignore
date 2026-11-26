@@ -4,3 +4,8 @@ dist/
 # Live stream state: written by `npm run session`, read by the overlays.
 overlays/state.json
 overlays/state.js
+
+# YouTube credentials live in ~/.config/wazoo-stream. Backstop for stray copies.
+client_secret*.json
+youtube-client*.json
+youtube-token*

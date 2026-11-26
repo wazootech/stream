@@ -8,27 +8,46 @@ const NOW = 1_700_000_000_000
 const run = (argv: string[], state = defaultState(), now = NOW) =>
   applyCommand(state, argv, now)
 
-test("alert: queues a follow with its name and detail", () => {
-  const { state, message } = run(["alert", "follow", "Ada"])
+test("alert: queues a subscriber with its name and detail", () => {
+  const { state, message } = run(["alert", "sub", "Ada"])
   assert.equal(state.alerts.length, 1)
   assert.deepEqual(state.alerts[0], {
     id: NOW,
-    kind: "follow",
+    kind: "sub",
     name: "Ada",
     detail: "",
     at: NOW,
   })
-  assert.match(message, /follow from Ada/)
+  assert.match(message, /sub from Ada/)
 
-  const next = run(["alert", "raid", "Grace", "42", "viewers"], state, NOW + 1)
+  const next = run(["alert", "redirect", "Grace", "42", "viewers"], state, NOW + 1)
   assert.equal(next.state.alerts[1].detail, "42 viewers")
 })
 
-test("alert: aliases map onto the five kinds", () => {
-  const kinds = ["follower", "subscribe", "resub", "bits", "gift", "RAID"].map(
-    (kind) => run(["alert", kind, "x"]).state.alerts[0].kind,
-  )
-  assert.deepEqual(kinds, ["follow", "sub", "sub", "cheer", "gift", "raid"])
+const kindOf = (word: string) => run(["alert", word, "x"]).state.alerts[0].kind
+
+test("alert: aliases map onto the YouTube kinds", () => {
+  const words = ["subscriber", "join", "milestone", "gifted", "super", "SuperSticker"]
+  assert.deepEqual(words.map(kindOf), [
+    "sub",
+    "member",
+    "milestone",
+    "gift",
+    "superchat",
+    "sticker",
+  ])
+})
+
+test("alert: the old Twitch words still work", () => {
+  const words = ["follow", "follower", "resub", "bits", "cheer", "RAID"]
+  assert.deepEqual(words.map(kindOf), [
+    "sub",
+    "sub",
+    "milestone",
+    "superchat",
+    "superchat",
+    "redirect",
+  ])
 })
 
 test("alert: ids always increase, even within one millisecond", () => {
@@ -58,7 +77,7 @@ test("alert: test queues one of each kind, clear empties the list", () => {
   const { state } = run(["alert", "test"])
   assert.deepEqual(
     state.alerts.map((a) => a.kind),
-    ["follow", "sub", "gift", "raid", "cheer"],
+    ["sub", "member", "milestone", "gift", "superchat", "sticker", "redirect"],
   )
   assert.deepEqual(run(["alert", "clear"], state).state.alerts, [])
 })
@@ -66,6 +85,7 @@ test("alert: test queues one of each kind, clear empties the list", () => {
 test("alert: a missing kind or name is a usage error", () => {
   assert.throws(() => run(["alert"]), UsageError)
   assert.throws(() => run(["alert", "nonsense", "x"]), UsageError)
+  assert.throws(() => run(["alert", "constructor", "x"]), UsageError)
   assert.throws(() => run(["alert", "follow"]), UsageError)
 })
 

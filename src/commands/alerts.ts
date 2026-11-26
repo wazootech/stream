@@ -7,26 +7,38 @@ export const MAX_ALERTS = 20
 const MAX_NAME = 40
 const MAX_DETAIL = 80
 
+/** Kind names and aliases. The Twitch words map to their closest YouTube match. */
 const KINDS: Record<string, AlertKind> = {
-  follow: "follow",
-  follower: "follow",
   sub: "sub",
   subscribe: "sub",
   subscriber: "sub",
-  resub: "sub",
+  follow: "sub",
+  follower: "sub",
+  member: "member",
+  join: "member",
+  milestone: "milestone",
+  resub: "milestone",
   gift: "gift",
-  raid: "raid",
-  cheer: "cheer",
-  bits: "cheer",
+  gifted: "gift",
+  superchat: "superchat",
+  super: "superchat",
+  cheer: "superchat",
+  bits: "superchat",
+  sticker: "sticker",
+  supersticker: "sticker",
+  redirect: "redirect",
+  raid: "redirect",
 }
 
 /** One of each, for rehearsing the overlay before going live. */
 const SAMPLES: [AlertKind, string, string][] = [
-  ["follow", "ExampleFollower", ""],
-  ["sub", "ExampleSubscriber", "Tier 1, 3 months"],
-  ["gift", "ExampleGifter", "5 subs"],
-  ["raid", "ExampleRaider", "42 viewers"],
-  ["cheer", "ExampleCheerer", "100 bits"],
+  ["sub", "ExampleSubscriber", ""],
+  ["member", "ExampleMember", "Crew"],
+  ["milestone", "ExampleRegular", "6 months, Crew: still here"],
+  ["gift", "ExampleGifter", "5 memberships, Crew"],
+  ["superchat", "ExampleSupporter", "$5.00: great stream"],
+  ["sticker", "ExampleStickerFan", "$2.00: a waving cat"],
+  ["redirect", "ExampleCreator", "42 viewers"],
 ]
 
 function push(
@@ -60,10 +72,12 @@ export function alertCommand(state: State, args: string[], now: number): Command
     )
     return { state: next, message: `Queued ${SAMPLES.length} sample alerts.` }
   }
-  const kind = first ? KINDS[first.toLowerCase()] : undefined
+  const word = first?.toLowerCase() ?? ""
+  const kind = Object.hasOwn(KINDS, word) ? KINDS[word] : undefined
   if (!kind) {
     throw new UsageError(
-      "Usage: alert follow|sub|gift|raid|cheer <name> [detail] | test | clear",
+      "Usage: alert sub|member|milestone|gift|superchat|sticker|redirect" +
+        " <name> [detail] | test | clear",
     )
   }
   const [name, ...detail] = rest

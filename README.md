@@ -48,7 +48,7 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 
 An **Alerts** layer sits on top of all five scenes and shows follow, sub, gift, raid,
 and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
-`npm run session -- alert ...`; it doesn't watch YouTube.
+`npm run session -- alert ...`, or what `npm run youtube` reads from your channel.
 
 A **Music** source plays on Starting Soon and Break only, on audio track 1. We use a
 free StreamBeats album (see [`docs/music.md`](docs/music.md)).

@@ -79,7 +79,8 @@ export const USAGE = `npm run session -- <command>
   predict <text>          Put a prediction on the air
   predict hit | miss      Settle it and update the score
   alert <kind> <name> [detail]
-                          Show a follow, sub, gift, raid, or cheer alert
+                          Show an alert: sub, member, milestone, gift,
+                          superchat, sticker, or redirect
   alert test | clear      Queue one of each to rehearse, or clear the list
   music <artist - title>  Show what's playing on the waiting and break screens
   music off               Hide the music line
