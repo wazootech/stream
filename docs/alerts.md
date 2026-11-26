@@ -2,7 +2,7 @@
 
 A transparent overlay that shows a card at the top of the screen for follows, subs,
 gifted subs, raids, and cheers. It is the **Alerts** source, layered on top of every
-scene, so it works on Starting Soon and Break as well as Main and Focus.
+scene, so it works on Starting Soon and Break as well as Main, Focus, and Game.
 
 ## What it does today
 

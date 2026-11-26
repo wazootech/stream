@@ -43,9 +43,10 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 | **Starting Soon** | Countdown and today's tasks while you set up.                  |
 | **Main**          | Default scene: screen, webcam, and the HUD sidebar.            |
 | **Focus**         | Screen-first, with a slim goal and timer bar along the bottom. |
+| **Game**          | One game window, a small webcam, and the goal and timer bar.   |
 | **Break**         | Big countdown plus a rotating "stand up, drink water" nudge.   |
 
-An **Alerts** layer sits on top of all four scenes and shows follow, sub, gift, raid,
+An **Alerts** layer sits on top of all five scenes and shows follow, sub, gift, raid,
 and cheer cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what you queue with
 `npm run session -- alert ...`; it doesn't watch YouTube.
 
@@ -55,6 +56,10 @@ free StreamBeats album (see [`docs/music.md`](docs/music.md)).
 
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
+
+The **Game** scene captures only the World of Warcraft window. To capture something
+else, change `GAME_WINDOW` in `src/game.ts` or pick the window in the source's
+properties.
 
 ## Running a session
 
