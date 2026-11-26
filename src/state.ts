@@ -22,14 +22,15 @@ export interface Predictions {
   total: number
 }
 
-export type AlertKind = "follow" | "sub" | "gift" | "raid" | "cheer"
+export type AlertKind =
+  "sub" | "member" | "milestone" | "gift" | "superchat" | "sticker" | "redirect"
 
 export interface Alert {
   /** Strictly increasing, so the overlay can tell new alerts from old ones. */
   id: number
   kind: AlertKind
   name: string
-  /** Free text such as "Tier 1", "5 subs", or "42 viewers". May be empty. */
+  /** Free text such as "$5.00: great stream" or "5 memberships". May be empty. */
   detail: string
   at: number
 }
