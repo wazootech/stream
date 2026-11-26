@@ -88,6 +88,8 @@ Run `npm run session -- help` for everything. A shell alias like
   roles.
 - [`docs/alerts.md`](docs/alerts.md): follow, sub, gift, raid, and cheer cards, and how
   to rehearse them.
+- [`docs/simulcasting.md`](docs/simulcasting.md): Twitch as a possible second target
+  later.
 - [`docs/music.md`](docs/music.md): background music for waiting and breaks, with the
   license caveats.
 
