@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stream dashboard</title>
+    <link rel="stylesheet" href="session.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="session.js" defer></script>
+    <script src="app.js" type="module"></script>
+  </head>
+  <body>
+    <p id="message" role="status">Connecting...</p>
+
+    <main>
+      <section id="timer">
+        <h2>Timer</h2>
+        <p class="now" id="now-timer"></p>
+        <div class="clock" id="clock">--:--</div>
+        <div class="bar"><i id="bar"></i></div>
+        <form class="row" data-command="timer">
+          <input
+            class="minutes"
+            type="number"
+            min="0.1"
+            max="1440"
+            step="any"
+            value="25"
+            required
+            aria-label="Timer minutes"
+          />
+          <input type="text" placeholder="Label (Focus)" aria-label="Timer label" />
+          <button class="primary">Start</button>
+        </form>
+        <button type="button" id="timer-stop" data-command="timer stop">
+          Stop timer
+        </button>
+      </section>
+
+      <section>
+        <h2>Break</h2>
+        <form class="row" data-command="break">
+          <input
+            class="minutes"
+            type="number"
+            min="0.1"
+            max="1440"
+            step="any"
+            value="5"
+            required
+            aria-label="Break minutes"
+          />
+          <button class="primary">Start break</button>
+        </form>
+        <p class="hint">Starts the countdown. Switch to the Break scene in OBS.</p>
+      </section>
+
+      <section>
+        <h2>Goal</h2>
+        <p class="now" id="now-goal"></p>
+        <form class="row" data-command="goal">
+          <input type="text" required placeholder="New goal" aria-label="Goal" />
+          <button class="primary">Set goal</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Tasks</h2>
+        <ul class="tasks" id="tasks"></ul>
+        <form class="row" data-command="task add">
+          <input type="text" required placeholder="New task" aria-label="Task" />
+          <button class="primary">Add</button>
+        </form>
+        <div class="confirm">
+          <button type="button" data-arm>Clear tasks</button>
+          <div hidden data-armed>
+            <button type="button" data-cancel>Cancel</button>
+            <button type="button" class="danger" data-command="task clear">
+              Confirm clear tasks
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Title</h2>
+        <p class="now" id="now-title"></p>
+        <form class="row" data-command="title">
+          <input type="text" required placeholder="New title" aria-label="Title" />
+          <button class="primary">Set title</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Prediction</h2>
+        <p class="now" id="now-prediction"></p>
+        <p class="hint" id="score"></p>
+        <form class="row" data-command="predict" data-reserved="hit miss reset">
+          <input type="text" required placeholder="I bet..." aria-label="Prediction" />
+          <button class="primary">Put on air</button>
+        </form>
+        <div class="pair">
+          <button type="button" class="settle" data-command="predict hit">Hit</button>
+          <button type="button" class="settle" data-command="predict miss">Miss</button>
+        </div>
+        <div class="confirm">
+          <button type="button" data-arm>Reset score</button>
+          <div hidden data-armed>
+            <button type="button" data-cancel>Cancel</button>
+            <button type="button" class="danger" data-command="predict reset">
+              Confirm score reset
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Music label</h2>
+        <p class="now" id="now-music"></p>
+        <form class="row" data-command="music" data-reserved="off">
+          <input type="text" required placeholder="Artist - Title" aria-label="Track" />
+          <button class="primary">Show</button>
+        </form>
+        <button type="button" data-command="music off">Hide music label</button>
+      </section>
+
+      <section>
+        <h2>Alerts</h2>
+        <p class="hint" id="alert-count"></p>
+        <div class="pair">
+          <button type="button" data-command="alert test">Test alerts</button>
+          <button type="button" data-command="alert clear">Clear alerts</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Current status</h2>
+        <pre id="status"></pre>
+      </section>
+
+      <section>
+        <h2>Reset</h2>
+        <p class="hint">Clears everything except the title.</p>
+        <div class="confirm">
+          <button type="button" data-arm>Reset session</button>
+          <div hidden data-armed>
+            <button type="button" data-cancel>Cancel</button>
+            <button type="button" class="danger" data-command="reset">
+              Confirm reset
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

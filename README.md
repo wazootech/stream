@@ -79,6 +79,15 @@ Run `npm run session -- help` for everything. A shell alias like
 `alias session='npm --prefix ~/path/to/stream run --silent session --'` makes it
 `session goal "..."`. The overlays pick up changes within about two seconds.
 
+## Dashboard
+
+`npm run dashboard` serves buttons for the timer, break, goal, tasks, title,
+predictions, music label, alert test, and reset at `http://127.0.0.1:4747/`. In OBS,
+choose **Docks > Custom Browser Docks**, give it a name, paste that URL, and apply. It
+runs the same commands as `npm run session` and works only while that terminal stays
+open. It listens on this machine alone and has no password, so any local program can use
+it. If port 4747 is busy, run `npm run dashboard -- --port 5000`.
+
 ## Docs
 
 - [`docs/persona.md`](docs/persona.md): who Ethan from Wazoo is, what's on the bench,
