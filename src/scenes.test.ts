@@ -12,7 +12,7 @@ test("the collection survives a JSON round trip", () => {
 test("every scene in scene_order exists and is a scene", () => {
   assert.deepEqual(
     collection.scene_order.map((s) => s.name),
-    ["Starting Soon", "Main", "Focus", "Game", "Break"],
+    ["Starting Soon", "Main", "Focus", "Main + Game", "Game Focus", "Break"],
   )
   for (const { name } of collection.scene_order) {
     assert.equal(byName.get(name)?.id, "scene", name)
@@ -81,13 +81,31 @@ test("the backdrop hides the Music source, so cover art never shows", () => {
   }
 })
 
-test("the Game scene captures the game window, not the whole display", () => {
-  const { items } = byName.get("Game")!.settings as { items: { name: string }[] }
-  const names = items.map((i) => i.name)
+const itemNames = (scene: string) =>
+  (byName.get(scene)!.settings as { items: { name: string }[] }).items.map(
+    (item) => item.name,
+  )
+
+test("Game Focus captures the game window, not the whole display", () => {
+  const names = itemNames("Game Focus")
   assert.ok(names.includes("Game Window"))
   assert.ok(!names.includes("Display"))
   const game = byName.get("Game Window")!.settings as { window: string }
   assert.match(game.window, /:Wow\.exe$/)
+})
+
+test("Main + Game is Main plus the game, without covering the main screen", () => {
+  const names = itemNames("Main + Game")
+  assert.deepEqual(
+    names.filter((name) => name !== "Game Window"),
+    itemNames("Main"),
+  )
+  const { items } = byName.get("Main + Game")!.settings as {
+    items: { name: string; pos: { y: number }; bounds: { y: number } }[]
+  }
+  const display = items.find((item) => item.name === "Display")!
+  const game = items.find((item) => item.name === "Game Window")!
+  assert.ok(display.pos.y + display.bounds.y <= game.pos.y)
 })
 
 test("the mic is live and filtered, desktop audio sits under it", () => {

@@ -43,10 +43,11 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 | **Starting Soon** | Countdown and today's tasks while you set up.                  |
 | **Main**          | Default scene: screen, webcam, and the HUD sidebar.            |
 | **Focus**         | Screen-first, with a slim goal and timer bar along the bottom. |
-| **Game**          | One game window, a small webcam, and the goal and timer bar.   |
+| **Main + Game**   | Main, with the game as a second screen under your main one.    |
+| **Game Focus**    | The game window, a small webcam, and the goal and timer bar.   |
 | **Break**         | Big countdown plus a rotating "stand up, drink water" nudge.   |
 
-An **Alerts** layer sits on top of all five scenes and shows subscriber, member, gifted
+An **Alerts** layer sits on top of all six scenes and shows subscriber, member, gifted
 membership, and Super Chat cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what
 you queue with `npm run session -- alert ...`, or what `npm run youtube` reads from your
 channel.
@@ -58,7 +59,8 @@ free StreamBeats album (see [`docs/music.md`](docs/music.md)).
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
 
-The **Game** scene captures only the World of Warcraft window. To capture something
+Both game scenes capture the World of Warcraft window by itself. In **Main + Game**,
+keep the game off the captured monitor so it doesn't show twice. To capture something
 else, change `GAME_WINDOW` in `src/game.ts` or pick the window in the source's
 properties.
 

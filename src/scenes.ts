@@ -3,6 +3,7 @@ import { pathToFileURL } from "node:url"
 import { BRAND } from "./brand.ts"
 import { audio, micFilters, musicSource } from "./audio.ts"
 import { gameSource } from "./game.ts"
+import { layouts, SIDE } from "./layouts.ts"
 import { abgr, scene, source } from "./obs.ts"
 import type { Json, Place } from "./obs.ts"
 
@@ -38,7 +39,6 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     })
 
   const full: Place = { x: 0, y: 0, w: W, h: H }
-  const SIDE = 480 // right-hand column in the main layout
 
   const backdrop = source("color_source_v3", "Backdrop", {
     color: abgr(...BRAND.backdropRgb),
@@ -68,35 +68,18 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
   // opaque backdrop, because audio files with cover art also draw a picture.
   const music = musicSource()
 
-  const layers: Record<string, [Json, Place][]> = {
-    "Starting Soon": [
-      [music, full],
-      [backdrop, full],
-      [starting, full],
-    ],
-    Main: [
-      [backdrop, full],
-      [display, { x: 0, y: 0, w: W - SIDE, h: H }],
-      [webcam, { x: W - SIDE, y: 0, w: SIDE, h: 270 }],
-      [hud, { x: W - SIDE, y: 270, w: SIDE, h: H - 270 }],
-    ],
-    Focus: [
-      [backdrop, full],
-      [display, { x: 0, y: 0, w: W, h: H - 120 }],
-      [hudBar, { x: 0, y: H - 120, w: W, h: 120 }],
-    ],
-    Game: [
-      [backdrop, full],
-      [game, { x: 0, y: 0, w: W, h: H - 120 }],
-      [webcam, { x: W - 408, y: H - 360, w: 384, h: 216 }],
-      [hudBar, { x: 0, y: H - 120, w: W, h: 120 }],
-    ],
-    Break: [
-      [music, full],
-      [backdrop, full],
-      [onBreak, full],
-    ],
+  const parts = {
+    backdrop,
+    display,
+    webcam,
+    game,
+    hud,
+    hudBar,
+    starting,
+    onBreak,
+    music,
   }
+  const layers = layouts(parts, W, H)
   const scenes = Object.entries(layers).map(([name, stack]) =>
     scene(name, [...stack, [alerts, full]]),
   )
