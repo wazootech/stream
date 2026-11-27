@@ -121,3 +121,19 @@ test("the page fits a narrow dock without sideways scrolling", async ({ stream }
   )
   expect(overflow).toBeLessThanOrEqual(0)
 })
+
+test("typing ahead of a slow save is not wiped", async ({ stream }) => {
+  const page = stream.dashboard
+  let release = () => {}
+  const gate = new Promise<void>((resolve) => (release = resolve))
+  await page.route("**/api/command", async (route) => {
+    await gate
+    await route.continue()
+  })
+  const input = page.getByRole("textbox", { name: "Task" })
+  await send(page, "task add", "first")
+  await input.fill("second")
+  release()
+  await expect(page.locator("#tasks li")).toHaveText([/first/])
+  await expect(input).toHaveValue("second")
+})
