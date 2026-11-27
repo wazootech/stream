@@ -45,13 +45,6 @@ h2 {
 
 .done .clock {
   color: var(--warn);
-  animation: pulse 1s steps(2, jump-none) infinite;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: 0.25;
-  }
 }
 
 .bar {
