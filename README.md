@@ -46,10 +46,11 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 | **Focus**         | Screen-first, with a slim goal and timer bar along the bottom. |
 | **Focus + Cam**   | Focus, with a small camera in the bottom-right corner.         |
 | **Main + Game**   | Main, with the game screen camera-sized under the chat.        |
+| **Game + Main**   | The reverse: the game large, your main screen under the chat.  |
 | **Game Focus**    | The game screen, a small webcam, and the goal and timer bar.   |
 | **Break**         | Big countdown plus a rotating "stand up, drink water" nudge.   |
 
-An **Alerts** layer sits on top of all seven scenes and shows subscriber, member, gifted
+An **Alerts** layer sits on top of all eight scenes and shows subscriber, member, gifted
 membership, and Super Chat cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what
 you queue with `npm run session -- alert ...`, or what `npm run youtube` reads from your
 channel.
@@ -61,12 +62,12 @@ free StreamBeats album (see [`docs/music.md`](docs/music.md)).
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
 
-Both game scenes capture a whole second monitor through the **Game Screen** source, so
+The game scenes capture a whole second monitor through the **Game Screen** source, so
 everything on that monitor shows. Run games there, and keep private windows off it.
 
-Chat shows on **Starting Soon**, **Main**, **Main + Game**, and **Break**, never on the
-focus scenes. Rehearse it with `npm run session -- chat test`. Live messages appear only
-when the bridge runs with `npm run youtube -- --show-chat`.
+Chat shows on **Starting Soon**, **Main**, **Main + Game**, **Game + Main**, and
+**Break**, never on the focus scenes. Rehearse it with `npm run session -- chat test`.
+Live messages appear only when the bridge runs with `npm run youtube -- --show-chat`.
 
 ## Running a session
 

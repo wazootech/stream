@@ -18,6 +18,7 @@ test("every scene in scene_order exists and is a scene", () => {
       "Focus",
       "Focus + Cam",
       "Main + Game",
+      "Game + Main",
       "Game Focus",
       "Break",
     ],
@@ -121,6 +122,17 @@ test("Main + Game is Main plus the game, without covering the main screen", () =
   const display = items.find((item) => item.name === "Display")!
   const game = items.find((item) => item.name === "Game Screen")!
   assert.ok(display.pos.x + display.bounds.x <= game.pos.x)
+})
+
+test("Game + Main is Main + Game with the two screens swapped", () => {
+  const swap = (name: string) =>
+    name === "Display" ? "Game Screen" : name === "Game Screen" ? "Display" : name
+  assert.deepEqual(itemNames("Game + Main"), itemNames("Main + Game").map(swap))
+  const places = (scene: string) =>
+    (byName.get(scene)!.settings as { items: Record<string, unknown>[] }).items.map(
+      ({ pos, bounds }) => ({ pos, bounds }),
+    )
+  assert.deepEqual(places("Game + Main"), places("Main + Game"))
 })
 
 test("chat is on every scene except the focus ones", () => {
