@@ -102,25 +102,24 @@ test("Focus + Cam is Focus with the camera on top", () => {
   ])
 })
 
-test("Game Focus captures the game window, not the whole display", () => {
+test("Game Focus shows the second screen, not the main one", () => {
   const names = itemNames("Game Focus")
-  assert.ok(names.includes("Game Window"))
+  assert.ok(names.includes("Game Screen"))
   assert.ok(!names.includes("Display"))
-  const game = byName.get("Game Window")!.settings as { window: string }
-  assert.match(game.window, /:Wow\.exe$/)
+  assert.equal(byName.get("Game Screen")!.id, "monitor_capture")
 })
 
 test("Main + Game is Main plus the game, without covering the main screen", () => {
   const names = itemNames("Main + Game")
   assert.deepEqual(
-    names.filter((name) => name !== "Game Window"),
+    names.filter((name) => name !== "Game Screen"),
     itemNames("Main"),
   )
   const { items } = byName.get("Main + Game")!.settings as {
     items: { name: string; pos: { y: number }; bounds: { y: number } }[]
   }
   const display = items.find((item) => item.name === "Display")!
-  const game = items.find((item) => item.name === "Game Window")!
+  const game = items.find((item) => item.name === "Game Screen")!
   assert.ok(display.pos.y + display.bounds.y <= game.pos.y)
 })
 

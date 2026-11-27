@@ -23,6 +23,6 @@ console.log(
   `\nNext:\n` +
     `  1. OBS > Settings > Video: set Base and Output to ${CANVAS.width}x${CANVAS.height}.\n` +
     `  2. OBS > Scene Collection > Import, then pick that file.\n` +
-    `  3. Pick your camera in the "Webcam" source and your screen in "Display".\n` +
+    `  3. Pick your camera in the "Webcam" source and your screens in "Display" and "Game Screen".\n` +
     `  4. Add chat for yourself: connect YouTube in Settings > Stream, then open chat from Docks.\n`,
 )

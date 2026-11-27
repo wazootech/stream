@@ -26,7 +26,8 @@ Then in OBS:
 1. **Settings > Video**: set Base and Output resolution to `1920x1080`. The layouts are
    drawn for 16:9, which is what YouTube expects.
 2. **Scene Collection > Import**, and choose `dist/wazoo-stream.scenes.json`.
-3. In the **Webcam** source pick your camera; in **Display** pick your screen.
+3. In the **Webcam** source pick your camera; in **Display** pick your main screen and
+   in **Game Screen** your game screen.
 4. **Settings > Stream**: choose YouTube, **Connect Account**, and pick the **Wazoo
    Ethan** channel. Open chat from the **Docks** menu so it stays off stream.
 5. **Settings > Output** (Advanced mode): record in Hybrid MP4 or MKV with audio tracks
@@ -45,7 +46,7 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 | **Focus**         | Screen-first, with a slim goal and timer bar along the bottom. |
 | **Focus + Cam**   | Focus, with a small camera in the bottom-right corner.         |
 | **Main + Game**   | Main, with the game as a second screen under your main one.    |
-| **Game Focus**    | The game window, a small webcam, and the goal and timer bar.   |
+| **Game Focus**    | The game screen, a small webcam, and the goal and timer bar.   |
 | **Break**         | Big countdown plus a rotating "stand up, drink water" nudge.   |
 
 An **Alerts** layer sits on top of all seven scenes and shows subscriber, member, gifted
@@ -60,10 +61,8 @@ free StreamBeats album (see [`docs/music.md`](docs/music.md)).
 The mic chain is noise suppression, a compressor, and a limiter. Desktop audio sits
 below the mic.
 
-Both game scenes capture the World of Warcraft window by itself. In **Main + Game**,
-keep the game off the captured monitor so it doesn't show twice. To capture something
-else, change `GAME_WINDOW` in `src/game.ts` or pick the window in the source's
-properties.
+Both game scenes capture a whole second monitor through the **Game Screen** source, so
+everything on that monitor shows. Run games there, and keep private windows off it.
 
 ## Running a session
 
