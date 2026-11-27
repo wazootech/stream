@@ -158,6 +158,13 @@ and `reset` empty them too. It removes messages the API reports as deleted and p
 reported as banned, but YouTube may not report every removal, so use **Clear** if
 something needs to come off screen. Turn on live chat moderation in YouTube Studio.
 
+## How long viewer data stays
+
+Saved alerts and chat messages are deleted once they are 30 days old. This happens
+whenever the dashboard, a `session` command, or the YouTube bridge runs, so nothing is
+deleted while none of them do. If the tools sit unused, run `npm run session -- reset`
+every few weeks. Recordings and published videos are not touched.
+
 ## Keep it safe on stream
 
 Never put a token, an alert-box URL, or an OAuth client file in this repo, and don't

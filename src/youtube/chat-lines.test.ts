@@ -13,7 +13,7 @@ import { parseOptions } from "./options.ts"
 
 const message = (id: string, type: string, extra: object = {}): ChatMessage => ({
   id,
-  snippet: { type, publishedAt: "2026-11-27T18:00:00Z", ...extra },
+  snippet: { type, publishedAt: new Date().toISOString(), ...extra },
   authorDetails: { displayName: `viewer ${id}` },
 })
 const said = (id: string, text: string, by = `channel-${id}`) =>

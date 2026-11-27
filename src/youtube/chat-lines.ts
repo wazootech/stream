@@ -27,6 +27,7 @@ export function chatUpdate(messages: ChatMessage[]): ChatUpdate {
         by: snippet.authorChannelId ?? "",
         name: cleanName(authorDetails?.displayName),
         text: text.slice(0, MAX_TEXT),
+        at: Date.parse(snippet.publishedAt) || Date.now(),
       })
     } else if (snippet.type === "tombstone") update.removed.push(id)
     else if (snippet.type === "messageDeletedEvent") {

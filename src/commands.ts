@@ -35,7 +35,7 @@ export function applyCommand(
     case "alert":
       return alertCommand(state, rest, now)
     case "chat":
-      return chatCommand(state, rest)
+      return chatCommand(state, rest, now)
     case "music":
       return musicCommand(state, rest)
     case "reset":
