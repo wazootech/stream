@@ -15,12 +15,14 @@
     "youtube": "node src/youtube/main.ts",
     "check": "tsc --noEmit",
     "test": "node --test \"src/**/*.test.ts\"",
+    "e2e": "playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --max-warnings 0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.65.0",
     "@types/node": "^24.0.0",
     "eslint": "^10.15.0",
     "globals": "^17.14.0",

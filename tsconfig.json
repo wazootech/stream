@@ -14,6 +14,6 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": ["src", "overlays", "dashboard"],
+  "include": ["src", "overlays", "dashboard", "e2e", "playwright.config.ts"],
   "exclude": ["overlays/state.js", "node_modules", "dist"]
 }

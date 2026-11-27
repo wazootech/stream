@@ -9,3 +9,7 @@ overlays/state.js
 client_secret*.json
 youtube-client*.json
 youtube-token*
+
+# Playwright output.
+test-results/
+playwright-report/
