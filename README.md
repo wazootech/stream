@@ -7,9 +7,9 @@ Owner: [@EthanThatOneKid](https://github.com/EthanThatOneKid). Set up, check, te
 build with
 `npm ci && npm run format:check && npm run lint && npm run check && npm test && npm run build`.
 
-The overlays show what's on the bench, a countdown, a task checklist, and a running
-prediction score. A tiny CLI updates them from the terminal you're already in, so
-keeping the stream readable never means alt-tabbing through OBS.
+The overlays show what's on the bench, a countdown, and a task checklist. A tiny CLI
+updates them from the terminal you're already in, so keeping the stream readable never
+means alt-tabbing through OBS.
 
 ## Quick start
 
@@ -68,8 +68,6 @@ properties.
 npm run session -- goal "Ship the OBS kit"
 npm run session -- task add "Write the HUD"
 npm run session -- timer 45 "Block 1"
-npm run session -- predict "The import works first try"
-npm run session -- predict hit
 npm run session -- task done 1
 npm run session -- alert follow Ada
 npm run session -- break           # 5 minutes, then switch to Break
@@ -82,12 +80,12 @@ Run `npm run session -- help` for everything. A shell alias like
 
 ## Dashboard
 
-`npm run dashboard` serves buttons for the timer, break, goal, tasks, title,
-predictions, music label, alert test, and reset at `http://127.0.0.1:4747/`. In OBS,
-choose **Docks > Custom Browser Docks**, give it a name, paste that URL, and apply. It
-runs the same commands as `npm run session` and works only while that terminal stays
-open. It listens on this machine alone and has no password, so any local program can use
-it. If port 4747 is busy, run `npm run dashboard -- --port 5000`.
+`npm run dashboard` serves buttons for the timer, break, goal, tasks, title, music
+label, alert test, and reset at `http://127.0.0.1:4747/`. In OBS, choose **Docks >
+Custom Browser Docks**, give it a name, paste that URL, and apply. It runs the same
+commands as `npm run session` and works only while that terminal stays open. It listens
+on this machine alone and has no password, so any local program can use it. If port 4747
+is busy, run `npm run dashboard -- --port 5000`.
 
 ## Docs
 

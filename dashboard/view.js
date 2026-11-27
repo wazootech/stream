@@ -39,15 +39,12 @@ function renderClock() {
  */
 export function show(snapshot, run) {
   state = snapshot.state
-  const { title, goal, tasks, predictions: p, music, alerts } = state
+  const { title, goal, tasks, music, alerts } = state
   set("now-title", title)
   set("now-goal", goal || "(no goal yet)")
-  set("now-prediction", p.current || "Nothing on the air.")
-  set("score", `Called it ${p.hits} of ${p.total}`)
   set("now-music", music || "(hidden)")
   set("alert-count", `${alerts.length} recent alerts in the session.`)
   set("status", snapshot.status)
-  disable(".settle", !p.current)
   disable("#timer-stop", !state.timer)
 
   // Redraw only on change, so a refresh doesn't steal focus from a task button.

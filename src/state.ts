@@ -76,7 +76,7 @@ export function defaultState(): State {
     timer: null,
     predictions: { current: null, hits: 0, total: 0 },
     alerts: [],
-    music: null,
+    music: BRAND.musicLabel,
     updatedAt: Date.now(),
   }
 }

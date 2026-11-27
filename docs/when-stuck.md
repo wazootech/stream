@@ -6,9 +6,6 @@ nothing to say, pick one:
 
 - **Narrate the decision, not the action.** Not "I'm typing a function" but "I'm picking
   a flag over a subcommand because...".
-- **Make a prediction.** "I bet this fails on the first run."
-  `npm run session -- predict "..."`, then settle it with `predict hit` or
-  `predict miss`.
 - **Read the error out loud** and guess the cause before you look it up.
 - **Explain the project to a newcomer.** Two sentences, as if they just walked in.
 - **Compare two options and pick one.** Say why the loser lost.
