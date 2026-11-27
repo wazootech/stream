@@ -26,6 +26,13 @@ export function layouts(
   const { backdrop, display, webcam, game, hud, hudBar, starting, onBreak, music } =
     parts
   const full: Place = { x: 0, y: 0, w: W, h: H }
+  // A small camera in the bottom right, just above the goal and timer bar.
+  const corner: Place = { x: W - 408, y: H - 360, w: 384, h: 216 }
+  const focus: [Json, Place][] = [
+    [backdrop, full],
+    [display, { x: 0, y: 0, w: W, h: H - 120 }],
+    [hudBar, { x: 0, y: H - 120, w: W, h: 120 }],
+  ]
   return {
     "Starting Soon": [
       [music, full],
@@ -38,11 +45,8 @@ export function layouts(
       [webcam, { x: W - SIDE, y: 0, w: SIDE, h: 270 }],
       [hud, { x: W - SIDE, y: 270, w: SIDE, h: H - 270 }],
     ],
-    Focus: [
-      [backdrop, full],
-      [display, { x: 0, y: 0, w: W, h: H - 120 }],
-      [hudBar, { x: 0, y: H - 120, w: W, h: 120 }],
-    ],
+    Focus: focus,
+    "Focus + Cam": [...focus, [webcam, corner]],
     // Main's layout, with the game as a second screen under the main one.
     "Main + Game": [
       [backdrop, full],
@@ -54,7 +58,7 @@ export function layouts(
     "Game Focus": [
       [backdrop, full],
       [game, { x: 0, y: 0, w: W, h: H - 120 }],
-      [webcam, { x: W - 408, y: H - 360, w: 384, h: 216 }],
+      [webcam, corner],
       [hudBar, { x: 0, y: H - 120, w: W, h: 120 }],
     ],
     Break: [
