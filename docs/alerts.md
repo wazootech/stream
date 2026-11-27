@@ -150,6 +150,14 @@ StreamElements and Streamlabs each give you a browser source URL that reacts to 
 events. Add it in OBS by hand and keep that URL out of git, because it contains a
 private token. It runs alongside this overlay, or instead of it.
 
+## Chat on screen
+
+`npm run youtube -- --show-chat` also draws new chat messages on the **Chat** sources.
+It keeps up to 30 in the local state files and empties them when it starts; `chat clear`
+and `reset` empty them too. It removes messages the API reports as deleted and people
+reported as banned, but YouTube may not report every removal, so use **Clear** if
+something needs to come off screen. Turn on live chat moderation in YouTube Studio.
+
 ## Keep it safe on stream
 
 Never put a token, an alert-box URL, or an OAuth client file in this repo, and don't

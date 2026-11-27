@@ -2,7 +2,7 @@
 ;(() => {
   const { $, watchState, remainingMs, formatClock } = window.Session
   const layout = new URLSearchParams(location.search).get("layout")
-  document.body.dataset.layout = layout === "compact" ? "compact" : "sidebar"
+  document.body.dataset.layout = layout === "compact" ? "compact" : "strip"
 
   /** @type {import("../src/state.ts").State | null} */
   let state = null

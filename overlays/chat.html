@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="session.css" />
+    <style>
+      /* A sidebar column (480 wide). Newest messages sit at the bottom. */
+      .chat {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 12px;
+        padding: 18px 22px;
+        background: var(--panel);
+        border-left: 2px solid var(--line);
+        border-top: 2px solid var(--line);
+      }
+      #lines {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 12px;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 19px;
+        line-height: 1.35;
+      }
+      #lines li {
+        flex: none;
+        overflow-wrap: anywhere;
+      }
+      #lines b {
+        color: var(--accent);
+        margin-right: 8px;
+      }
+      #lines .empty {
+        color: var(--muted);
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="chat">
+      <h2>Live chat</h2>
+      <ul id="lines"></ul>
+    </main>
+
+    <script src="session.js"></script>
+    <script src="chat.js"></script>
+  </body>
+</html>

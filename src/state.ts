@@ -35,6 +35,14 @@ export interface Alert {
   at: number
 }
 
+export interface ChatLine {
+  id: string
+  /** The author's channel id, so a ban can remove their lines. */
+  by: string
+  name: string
+  text: string
+}
+
 export interface State {
   title: string
   goal: string
@@ -43,6 +51,8 @@ export interface State {
   predictions: Predictions
   /** The most recent alerts, oldest first. The overlay plays new ones. */
   alerts: Alert[]
+  /** Recent chat shown on screen, oldest first. */
+  chat: ChatLine[]
   /** What's playing ("Artist - Title"), shown on the waiting and break screens. */
   music: string | null
   updatedAt: number
@@ -76,6 +86,7 @@ export function defaultState(): State {
     timer: null,
     predictions: { current: null, hits: 0, total: 0 },
     alerts: [],
+    chat: [],
     music: BRAND.musicLabel,
     updatedAt: Date.now(),
   }

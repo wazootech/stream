@@ -7,6 +7,7 @@ export const USAGE = `npm run youtube -- [command] [options]
   login                     Sign in again (for example, to switch channels)
   help                      Show this message
 
+  --show-chat               Also show new chat messages on screen
   --chat-seconds <n>        Shortest gap between chat polls (default 10, min 5)
   --subscriber-seconds <n>  Gap between subscriber polls (default 60, min 30,
                             0 turns subscriber alerts off)`
@@ -15,6 +16,7 @@ export interface Options {
   command: "watch" | "login" | "help"
   chatMs: number
   subscriberMs: number
+  showChat: boolean
 }
 
 function milliseconds(name: string, raw: string, min: number): number {
@@ -34,6 +36,7 @@ function parse(argv: string[]) {
         "chat-seconds": { type: "string", default: "10" },
         "subscriber-seconds": { type: "string", default: "60" },
         help: { type: "boolean", short: "h" },
+        "show-chat": { type: "boolean", default: false },
       },
     })
   } catch (error) {
@@ -52,6 +55,7 @@ export function parseOptions(argv: string[]): Options {
   const subscribers = values["subscriber-seconds"]
   return {
     command,
+    showChat: values["show-chat"],
     chatMs: milliseconds("chat-seconds", chat, 5),
     subscriberMs:
       subscribers === "0" ? 0 : milliseconds("subscriber-seconds", subscribers, 30),

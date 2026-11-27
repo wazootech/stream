@@ -19,6 +19,10 @@ export interface ChatMessage {
   snippet: {
     type: string
     publishedAt: string
+    displayMessage?: string
+    authorChannelId?: string
+    messageDeletedDetails?: { deletedMessageId?: string }
+    userBannedDetails?: { bannedUserDetails?: { channelId?: string } }
     superChatDetails?: Paid
     superStickerDetails?: Paid
     newSponsorDetails?: { memberLevelName?: string; isUpgrade?: boolean }

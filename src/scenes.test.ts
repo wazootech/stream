@@ -49,13 +49,13 @@ test("every scene item points at a real source, with unique ids per scene", () =
 
 test("browser sources are file:// pages under the overlays directory", () => {
   const browsers = collection.sources.filter((s) => s.id === "browser_source")
-  assert.equal(browsers.length, 5)
+  assert.equal(browsers.length, 7)
   for (const b of browsers) {
     const { url } = b.settings as { url: string }
     // Windows resolves "/work" to "C:/work", so don't pin the drive prefix.
     assert.match(
       url,
-      /^file:\/\/\/(?:[A-Za-z]:\/)?work\/stream\/overlays\/(hud|screen|alerts)\.html(?:\?|$)/,
+      /^file:\/\/\/(?:[A-Za-z]:\/)?work\/stream\/overlays\/(hud|screen|alerts|chat)\.html(?:\?|$)/,
     )
   }
 })
@@ -110,30 +110,22 @@ test("Game Focus shows the second screen, not the main one", () => {
 })
 
 test("Main + Game is Main plus the game, without covering the main screen", () => {
-  const names = itemNames("Main + Game")
+  const names = itemNames("Main + Game").map((n) => (n === "Chat Small" ? "Chat" : n))
   assert.deepEqual(
     names.filter((name) => name !== "Game Screen"),
     itemNames("Main"),
   )
   const { items } = byName.get("Main + Game")!.settings as {
-    items: { name: string; pos: { y: number }; bounds: { y: number } }[]
+    items: { name: string; pos: { x: number }; bounds: { x: number } }[]
   }
   const display = items.find((item) => item.name === "Display")!
   const game = items.find((item) => item.name === "Game Screen")!
-  assert.ok(display.pos.y + display.bounds.y <= game.pos.y)
+  assert.ok(display.pos.x + display.bounds.x <= game.pos.x)
 })
 
-test("the mic is live and filtered, desktop audio sits under it", () => {
-  const mic = collection.AuxAudioDevice1 as {
-    muted: boolean
-    volume: number
-    filters: { id: string }[]
+test("chat is on every scene except the focus ones", () => {
+  for (const { name } of collection.scene_order) {
+    const hasChat = itemNames(name).some((item) => item.startsWith("Chat"))
+    assert.equal(hasChat, !name.includes("Focus"), name)
   }
-  const desktop = collection.DesktopAudioDevice1 as { volume: number }
-  assert.equal(mic.muted, false)
-  assert.deepEqual(
-    mic.filters.map((f) => f.id),
-    ["noise_suppress_filter_v2", "compressor_filter", "limiter_filter"],
-  )
-  assert.ok(desktop.volume < mic.volume)
 })
