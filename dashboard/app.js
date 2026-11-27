@@ -58,16 +58,22 @@ async function poll() {
 
 /** @param {HTMLFormElement} form */
 async function submit(form) {
-  const words = [...form.querySelectorAll("input")]
-    .map((input) => input.value.trim())
-    .filter(Boolean)
+  const sent = [...form.querySelectorAll("input")].map((input) => ({
+    input,
+    value: input.value,
+  }))
+  const words = sent.map(({ value }) => value.trim()).filter(Boolean)
   if (words.length === 0) return say("Type something first.", true)
   const typed = words.join(" ")
   if (form.dataset.reserved?.split(" ").includes(typed)) {
     return say(`"${typed}" is a command word. Use its button instead.`, true)
   }
   const command = (form.dataset.command ?? "").split(" ")
-  if (await run([...command, ...words])) form.reset()
+  if (!(await run([...command, ...words]))) return
+  // Clear only what was sent: anything typed while it was saving stays.
+  for (const { input, value } of sent) {
+    if (input.value === value) input.value = input.defaultValue
+  }
 }
 
 for (const button of document.querySelectorAll("button[data-command]")) {
