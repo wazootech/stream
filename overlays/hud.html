@@ -13,28 +13,79 @@
         background: var(--panel);
         border-top: 2px solid var(--line);
         display: grid;
-        grid-template-columns: minmax(0, 1.2fr) 360px minmax(0, 1.2fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
         grid-template-rows: minmax(0, 1fr) auto;
         align-items: start;
-        gap: 44px;
+        gap: 14px 44px;
         overflow: hidden;
       }
       #goal {
-        margin-top: 10px;
-        font-size: 42px;
-        line-height: 1.25;
+        margin-top: 8px;
+        font-size: 36px;
+        line-height: 1.2;
+      }
+      .timer {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: start;
+        align-items: baseline;
+        gap: 6px 14px;
+        margin-top: 14px;
       }
       .timer .clock {
-        font-size: 96px;
-        margin: 6px 0 12px;
+        font-size: 34px;
+      }
+      .timer .bar {
+        grid-column: 1 / -1;
+        height: 4px;
+        width: 260px;
       }
       #timer-label {
         color: var(--muted);
-        font-size: 16px;
+        font-size: 18px;
       }
-      .tasks {
-        margin-top: 10px;
-        font-size: 25px;
+      #splits {
+        margin: 6px 0 0;
+        padding: 0;
+        list-style: none;
+        font-size: 21px;
+      }
+      #splits li,
+      #total-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 1px 10px;
+        border-left: 3px solid transparent;
+      }
+      #splits .name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      #splits .time,
+      #total {
+        font-variant-numeric: tabular-nums;
+        flex: none;
+      }
+      #splits .done {
+        color: var(--muted);
+      }
+      #splits .current {
+        border-left-color: var(--accent);
+        background: var(--line);
+      }
+      #splits .current .time {
+        color: var(--accent);
+      }
+      #total-row {
+        margin-top: 4px;
+        border-top: 2px solid var(--line);
+        color: var(--muted);
+        font-size: 17px;
+      }
+      [hidden] {
+        display: none !important;
       }
       .links {
         grid-column: 1 / -1;
@@ -52,11 +103,29 @@
 
       body[data-layout="compact"] .hud {
         grid-template-rows: none;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
         align-items: center;
         gap: 40px;
         padding: 0 40px;
         border-top: 2px solid var(--line);
+      }
+      body[data-layout="compact"] header {
+        display: contents;
+      }
+      body[data-layout="compact"] header .tag {
+        display: none;
+      }
+      body[data-layout="compact"] #goal {
+        order: 1;
+      }
+      body[data-layout="compact"] .tasks-section {
+        order: 2;
+        min-width: 0;
+        font-size: 28px;
+      }
+      body[data-layout="compact"] .timer {
+        order: 3;
+        margin: 0;
       }
       body[data-layout="compact"] #goal {
         font-size: 28px;
@@ -65,13 +134,14 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      body[data-layout="compact"] .timer .clock {
-        font-size: 56px;
-        margin: 0;
+      body[data-layout="compact"] #splits {
+        font-size: 28px;
       }
       body[data-layout="compact"] .timer .bar,
       body[data-layout="compact"] .links,
-      body[data-layout="compact"] .tasks-section {
+      body[data-layout="compact"] .tasks-section h2,
+      body[data-layout="compact"] #splits li:not(.current),
+      body[data-layout="compact"] #total-row {
         display: none;
       }
     </style>
@@ -81,17 +151,17 @@
       <header>
         <span class="tag">On the bench</span>
         <h1 id="goal"></h1>
+        <div class="timer" id="timer" hidden>
+          <span id="timer-label"></span>
+          <span class="clock" id="clock"></span>
+          <div class="bar"><i id="bar"></i></div>
+        </div>
       </header>
 
-      <section class="timer" id="timer">
-        <div id="timer-label"></div>
-        <div class="clock" id="clock">--:--</div>
-        <div class="bar"><i id="bar"></i></div>
-      </section>
-
       <section class="tasks-section">
-        <h2>Tasks</h2>
-        <ul class="tasks" id="tasks"></ul>
+        <h2>Splits</h2>
+        <ul id="splits"></ul>
+        <div id="total-row" hidden><span>Total</span><span id="total"></span></div>
       </section>
 
       <footer class="links">
