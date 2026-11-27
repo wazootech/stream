@@ -5,7 +5,7 @@ as [Wazoo Ethan (@WazooEthan)](https://www.youtube.com/@WazooEthan).
 
 Owner: [@EthanThatOneKid](https://github.com/EthanThatOneKid). Set up, check, test, and
 build with
-`npm ci && npm run format:check && npm run lint && npm run check && npm test && npm run build`.
+`npm ci && npm run format:check && npm run lint && npm run check && npm test && npm run e2e && npm run build`.
 
 The overlays show what's on the bench, a countdown, and a task checklist. A tiny CLI
 updates them from the terminal you're already in, so keeping the stream readable never
@@ -122,7 +122,12 @@ npm run format:check  # prettier
 npm run lint          # eslint
 npm run check         # tsc: type-checks src/ and the overlay scripts
 npm test               # node:test
+npm run e2e            # Playwright: the dashboard and overlays in a real browser
 ```
+
+The browser tests start their own dashboard with temporary state, so they never touch
+your session. Locally they use the installed Microsoft Edge (`PW_CHANNEL=chrome` picks
+Chrome instead); CI downloads Chromium. They do not test the dock inside OBS.
 
 Overlay pages are plain JavaScript checked by `tsc` through `// @ts-check` and the
 shared `State` type, because OBS browser sources load `file://` pages and can't run

@@ -4,7 +4,7 @@ import tseslint from "typescript-eslint"
 
 export default tseslint.config(
   {
-    ignores: ["dist/**", "node_modules/**", "overlays/state.js"],
+    ignores: ["dist/**", "node_modules/**", "overlays/state.js", "test-results/**"],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,

@@ -19,7 +19,7 @@ OBS scenes, overlays, and session templates for the Wazoo stream. See
   is generated into `dist/` (gitignored) by `npm run build`. Live state
   (`overlays/state.js`, `state.json`) is gitignored too. This repo is public.
 - **Verify before pushing:**
-  `npm run format:check && npm run lint && npm run check && npm test && npm run build`.
+  `npm run format:check && npm run lint && npm run check && npm test && npm run e2e && npm run build`.
 - **Layouts target a 1920x1080 canvas.** Change `CANVAS` in `src/scenes.ts` if that ever
   changes, and update the README.
 - **Brand strings live in `src/brand.ts`.** The accent color is in
