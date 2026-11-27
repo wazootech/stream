@@ -67,3 +67,20 @@ test("typed text is never treated as markup", async ({ stream }) => {
     expect(await page.evaluate(() => "pwned" in window)).toBe(false)
   }
 })
+
+test("the HUD timer bar spans its label and clock", async ({ stream }) => {
+  const hud = await stream.overlay("hud.html?layout=strip")
+  const page = stream.dashboard
+  for (const label of ["Go", "A rather long focus block label"]) {
+    await page.getByLabel("Timer label").fill(label)
+    await page.locator('form[data-command="timer"] button').click()
+    await expect(hud.locator("#timer-label")).toHaveText(label)
+    const [start, end, bar] = await Promise.all(
+      ["#timer-label", "#clock", "#timer .bar"].map(async (selector) => {
+        return (await hud.locator(selector).boundingBox())!
+      }),
+    )
+    expect(bar.x).toBeCloseTo(start.x, 0)
+    expect(bar.x + bar.width).toBeCloseTo(end.x + end.width, 0)
+  }
+})
