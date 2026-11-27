@@ -32,12 +32,18 @@ export function layouts(
   const corner: Place = { x: W - 408, y: H - 360, w: 384, h: 216 }
   const left = W - SIDE
   const top = H - 270
-  // Shared by the Main layouts: your screen, the goal strip, and the camera.
-  const main: [Json, Place][] = [
+  // Shared by the Main layouts: a big screen, the goal strip, and the camera.
+  const desk = (big: Json): [Json, Place][] => [
     [backdrop, full],
-    [display, { x: 0, y: 0, w: left, h: top }],
+    [big, { x: 0, y: 0, w: left, h: top }],
     [hud, { x: 0, y: top, w: left, h: 270 }],
     [webcam, { x: left, y: 0, w: SIDE, h: 270 }],
+  ]
+  // A second screen camera-sized at the bottom of the column, with chat above it.
+  const duo = (big: Json, small: Json): [Json, Place][] => [
+    ...desk(big),
+    [chatSmall, { x: left, y: 270, w: SIDE, h: H - 570 }],
+    [small, { x: left, y: H - 300, w: SIDE, h: 300 }],
   ]
   // The waiting and break screens leave this column free.
   const aside: Place = { x: left, y: 135, w: SIDE, h: 810 }
@@ -53,15 +59,11 @@ export function layouts(
       [starting, full],
       [chat, aside],
     ],
-    Main: [...main, [chat, { x: left, y: 270, w: SIDE, h: H - 270 }]],
+    Main: [...desk(display), [chat, { x: left, y: 270, w: SIDE, h: H - 270 }]],
     Focus: focus,
     "Focus + Cam": [...focus, [webcam, corner]],
-    // Main's layout, with the game as a second camera-sized picture at the bottom.
-    "Main + Game": [
-      ...main,
-      [chatSmall, { x: left, y: 270, w: SIDE, h: H - 570 }],
-      [game, { x: left, y: H - 300, w: SIDE, h: 300 }],
-    ],
+    "Main + Game": duo(display, game),
+    "Game + Main": duo(game, display),
     "Game Focus": [
       [backdrop, full],
       [game, { x: 0, y: 0, w: W, h: H - 120 }],
