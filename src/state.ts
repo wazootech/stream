@@ -7,6 +7,8 @@ import { expire } from "./retention.ts"
 export interface Task {
   text: string
   done: boolean
+  /** Time spent on it so far, not counting a running split. */
+  ms: number
 }
 
 export interface Timer {
@@ -50,6 +52,8 @@ export interface State {
   title: string
   goal: string
   tasks: Task[]
+  /** When the running task split began, or null while splits are stopped. */
+  splitFrom: number | null
   timer: Timer | null
   predictions: Predictions
   /** The most recent alerts, oldest first. The overlay plays new ones. */
@@ -86,6 +90,7 @@ export function defaultState(): State {
     title: BRAND.defaultTitle,
     goal: "",
     tasks: [],
+    splitFrom: null,
     timer: null,
     predictions: { current: null, hits: 0, total: 0 },
     alerts: [],
@@ -103,6 +108,7 @@ export function loadState(dir: string = overlaysDir): State {
   const loaded: State = {
     ...base,
     ...saved,
+    tasks: (saved.tasks ?? base.tasks).map((task) => ({ ...task, ms: task.ms ?? 0 })),
     predictions: { ...base.predictions, ...saved.predictions },
   }
   // Every tool reads through here, so old viewer data is deleted whenever one runs.

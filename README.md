@@ -75,7 +75,9 @@ Live messages appear only when the bridge runs with `npm run youtube -- --show-c
 npm run session -- goal "Ship the OBS kit"
 npm run session -- task add "Write the HUD"
 npm run session -- timer 45 "Block 1"
-npm run session -- task done 1
+npm run session -- task start       # time each task, LiveSplit style
+npm run session -- task done 1      # records its time and moves on
+npm run session -- task pause
 npm run session -- alert follow Ada
 npm run session -- break           # 5 minutes, then switch to Break
 npm run session -- status
