@@ -1,4 +1,4 @@
-import { UsageError } from "../state.ts"
+import { loadState, UsageError } from "../state.ts"
 import { ApiError, createApi } from "./api.ts"
 import type { Api } from "./api.ts"
 import { tokenProvider } from "./auth.ts"
@@ -51,6 +51,9 @@ async function watch(api: Api, options: Options): Promise<void> {
   const { chatMs, subscriberMs, showChat } = options
   if (showChat) clearChat()
   const since = Date.now()
+  // Loading the state deletes expired viewer data; repeat it on long runs.
+  loadState()
+  setInterval(() => loadState(), 60 * 60_000).unref()
   const log = console.log
   const sources = [chatSource({ api, since, minMs: chatMs, showChat, log })]
   if (subscriberMs > 0) {

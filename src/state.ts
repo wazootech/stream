@@ -2,6 +2,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import { BRAND } from "./brand.ts"
+import { expire } from "./retention.ts"
 
 export interface Task {
   text: string
@@ -41,6 +42,8 @@ export interface ChatLine {
   by: string
   name: string
   text: string
+  /** When it was posted, so it can expire. */
+  at: number
 }
 
 export interface State {
@@ -97,11 +100,14 @@ export function loadState(dir: string = overlaysDir): State {
   if (!existsSync(json)) return defaultState()
   const saved = JSON.parse(readFileSync(json, "utf8")) as Partial<State>
   const base = defaultState()
-  return {
+  const loaded: State = {
     ...base,
     ...saved,
     predictions: { ...base.predictions, ...saved.predictions },
   }
+  // Every tool reads through here, so old viewer data is deleted whenever one runs.
+  const kept = expire(loaded)
+  return kept === loaded ? loaded : saveState(kept, dir)
 }
 
 /**

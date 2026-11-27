@@ -15,7 +15,7 @@ const SAMPLES: [name: string, text: string][] = [
 ]
 
 /** `chat test` fills the on-screen chat with samples; `chat clear` empties it. */
-export function chatCommand(state: State, args: string[]): CommandResult {
+export function chatCommand(state: State, args: string[], now: number): CommandResult {
   const [action, ...extra] = args
   if (extra.length === 0 && action === "clear") {
     return { state: { ...state, chat: [] }, message: "Cleared chat." }
@@ -26,6 +26,7 @@ export function chatCommand(state: State, args: string[]): CommandResult {
       by: `sample-${i}`,
       name,
       text,
+      at: now,
     }))
     return {
       state: { ...state, chat },
