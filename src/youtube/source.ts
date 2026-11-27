@@ -1,7 +1,10 @@
+import type { ChatUpdate } from "./chat-lines.ts"
 import type { Card } from "./events.ts"
 
 export interface PollResult {
   cards: Card[]
+  /** On-screen chat changes, when the owner asked for them. */
+  chat?: ChatUpdate
   /** How long to wait before polling this source again. */
   waitMs: number
 }

@@ -52,7 +52,9 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
   })
   const webcam = source("dshow_input", "Webcam", {})
   const game = gameSource()
-  const hud = browser("HUD", page("hud.html", "?layout=sidebar"), SIDE, H - 270)
+  const hud = browser("HUD", page("hud.html", "?layout=strip"), W - SIDE, 270)
+  const chat = browser("Chat", page("chat.html"), SIDE, H - 270)
+  const chatSmall = browser("Chat Small", page("chat.html"), SIDE, H - 570)
   const hudBar = browser("HUD Bar", page("hud.html", "?layout=compact"), W, 120)
   const starting = browser(
     "Screen: Starting",
@@ -74,6 +76,8 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     webcam,
     game,
     hud,
+    chat,
+    chatSmall,
     hudBar,
     starting,
     onBreak,
@@ -91,6 +95,8 @@ export function buildSceneCollection(options: SceneOptions): SceneCollection {
     webcam,
     game,
     hud,
+    chat,
+    chatSmall,
     hudBar,
     starting,
     onBreak,

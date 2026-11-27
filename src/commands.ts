@@ -1,5 +1,6 @@
 import { requireText } from "./args.ts"
 import { alertCommand } from "./commands/alerts.ts"
+import { chatCommand } from "./commands/chat.ts"
 import { musicCommand } from "./commands/music.ts"
 import { predictCommand } from "./commands/predict.ts"
 import { taskCommand } from "./commands/tasks.ts"
@@ -33,6 +34,8 @@ export function applyCommand(
       return predictCommand(state, rest)
     case "alert":
       return alertCommand(state, rest, now)
+    case "chat":
+      return chatCommand(state, rest)
     case "music":
       return musicCommand(state, rest)
     case "reset":
@@ -82,6 +85,7 @@ export const USAGE = `npm run session -- <command>
                           Show an alert: sub, member, milestone, gift,
                           superchat, sticker, or redirect
   alert test | clear      Queue one of each to rehearse, or clear the list
+  chat test | clear       Fill the on-screen chat with samples, or empty it
   music <artist - title>  Show what's playing on the waiting and break screens
   music off               Hide the music line
   title <text>           Rename the stream title shown on the overlays

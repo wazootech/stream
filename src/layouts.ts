@@ -10,6 +10,8 @@ export type Parts = Record<
   | "webcam"
   | "game"
   | "hud"
+  | "chat"
+  | "chatSmall"
   | "hudBar"
   | "starting"
   | "onBreak"
@@ -23,11 +25,22 @@ export function layouts(
   W: number,
   H: number,
 ): Record<string, [Json, Place][]> {
-  const { backdrop, display, webcam, game, hud, hudBar, starting, onBreak, music } =
-    parts
+  const { backdrop, display, webcam, game, hud, hudBar } = parts
+  const { chat, chatSmall, starting, onBreak, music } = parts
   const full: Place = { x: 0, y: 0, w: W, h: H }
   // A small camera in the bottom right, just above the goal and timer bar.
   const corner: Place = { x: W - 408, y: H - 360, w: 384, h: 216 }
+  const left = W - SIDE
+  const top = H - 270
+  // Shared by the Main layouts: your screen, the goal strip, and the camera.
+  const main: [Json, Place][] = [
+    [backdrop, full],
+    [display, { x: 0, y: 0, w: left, h: top }],
+    [hud, { x: 0, y: top, w: left, h: 270 }],
+    [webcam, { x: left, y: 0, w: SIDE, h: 270 }],
+  ]
+  // The waiting and break screens leave this column free.
+  const aside: Place = { x: left, y: 135, w: SIDE, h: 810 }
   const focus: [Json, Place][] = [
     [backdrop, full],
     [display, { x: 0, y: 0, w: W, h: H - 120 }],
@@ -38,22 +51,16 @@ export function layouts(
       [music, full],
       [backdrop, full],
       [starting, full],
+      [chat, aside],
     ],
-    Main: [
-      [backdrop, full],
-      [display, { x: 0, y: 0, w: W - SIDE, h: H }],
-      [webcam, { x: W - SIDE, y: 0, w: SIDE, h: 270 }],
-      [hud, { x: W - SIDE, y: 270, w: SIDE, h: H - 270 }],
-    ],
+    Main: [...main, [chat, { x: left, y: 270, w: SIDE, h: H - 270 }]],
     Focus: focus,
     "Focus + Cam": [...focus, [webcam, corner]],
-    // Main's layout, with the game as a second screen under the main one.
+    // Main's layout, with the game as a second camera-sized picture at the bottom.
     "Main + Game": [
-      [backdrop, full],
-      [display, { x: 0, y: 0, w: W - SIDE, h: H - 270 }],
-      [game, { x: (W - SIDE - 480) / 2, y: H - 270, w: 480, h: 270 }],
-      [webcam, { x: W - SIDE, y: 0, w: SIDE, h: 270 }],
-      [hud, { x: W - SIDE, y: 270, w: SIDE, h: H - 270 }],
+      ...main,
+      [chatSmall, { x: left, y: 270, w: SIDE, h: H - 570 }],
+      [game, { x: left, y: H - 300, w: SIDE, h: 300 }],
     ],
     "Game Focus": [
       [backdrop, full],
@@ -65,6 +72,7 @@ export function layouts(
       [music, full],
       [backdrop, full],
       [onBreak, full],
+      [chat, aside],
     ],
   }
 }

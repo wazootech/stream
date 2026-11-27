@@ -1,5 +1,6 @@
 import { ApiError } from "./api.ts"
 import type { Api } from "./api.ts"
+import { chatUpdate } from "./chat-lines.ts"
 import { chatCard } from "./events.ts"
 import type { Card, ChatMessage } from "./events.ts"
 import { dedupe } from "./source.ts"
@@ -28,9 +29,10 @@ export function chatSource(options: {
   api: Api
   since: number
   minMs: number
+  showChat?: boolean
   log?: (line: string) => void
 }): Source {
-  const { api, since, minMs, log = () => {} } = options
+  const { api, since, minMs, showChat = false, log = () => {} } = options
   const first = dedupe()
   const ended = new Set<string>()
   let chatId: string | undefined
@@ -94,6 +96,8 @@ export function chatSource(options: {
       pageToken = page.nextPageToken ?? pageToken
       const items = page.items ?? []
       const cards = fresh(items)
+      const recent = items.filter((m) => Date.parse(m.snippet.publishedAt) >= since)
+      const chat = showChat ? chatUpdate(recent) : undefined
       if (items.some((item) => item.snippet.type === "chatEndedEvent")) {
         return end(cards)
       }
@@ -102,7 +106,8 @@ export function chatSource(options: {
         searching = true
         return { cards, waitMs: IDLE_MS }
       }
-      return { cards, waitMs: Math.max(page.pollingIntervalMillis ?? 0, minMs) }
+      const waitMs = Math.max(page.pollingIntervalMillis ?? 0, minMs)
+      return { cards, waitMs, ...(chat && { chat }) }
     },
   }
 }

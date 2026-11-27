@@ -132,6 +132,7 @@ test("options: defaults, floors, and turning subscribers off", () => {
     command: "watch",
     chatMs: 10_000,
     subscriberMs: 60_000,
+    showChat: false,
   })
   const custom = parseOptions(["--chat-seconds", "20", "--subscriber-seconds", "0"])
   assert.equal(custom.chatMs, 20_000)

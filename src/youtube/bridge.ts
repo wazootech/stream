@@ -1,5 +1,6 @@
 import { setTimeout as delay } from "node:timers/promises"
 import { ApiError } from "./api.ts"
+import type { ChatUpdate } from "./chat-lines.ts"
 import type { Card } from "./events.ts"
 import { SetupError } from "./files.ts"
 import { OAuthError } from "./oauth.ts"
@@ -34,6 +35,7 @@ export async function runBridge(options: {
   sources: Source[]
   /** Queues cards and returns the ones that have to wait. */
   emit: (cards: Card[]) => Card[]
+  chat?: (update: ChatUpdate) => void
   log?: (line: string) => void
   now?: () => number
   sleep?: (ms: number) => Promise<unknown>
@@ -46,8 +48,10 @@ export async function runBridge(options: {
   async function run(job: (typeof jobs)[number]) {
     const { source } = job
     try {
-      const { cards, waitMs } = await source.poll()
+      const result = await source.poll()
+      const { cards, waitMs } = result
       pending.push(...cards)
+      if (result.chat) options.chat?.(result.chat)
       job.failures = 0
       job.nextAt = now() + waitMs
     } catch (error) {

@@ -6,32 +6,48 @@
     <title>HUD</title>
     <link rel="stylesheet" href="session.css" />
     <style>
-      /* ?layout=sidebar (480x810, default) or ?layout=compact (1920x120). */
+      /* ?layout=strip (1440x270, default) or ?layout=compact (1920x120). */
       .hud {
         height: 100vh;
-        padding: 22px;
+        padding: 26px 34px;
         background: var(--panel);
-        border-left: 2px solid var(--line);
+        border-top: 2px solid var(--line);
         display: grid;
-        grid-template-rows: auto auto 1fr;
-        gap: 22px;
+        grid-template-columns: minmax(0, 1.2fr) 360px minmax(0, 1.2fr);
+        grid-template-rows: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 44px;
+        overflow: hidden;
       }
       #goal {
-        margin-top: 8px;
-        font-size: 24px;
+        margin-top: 10px;
+        font-size: 42px;
         line-height: 1.25;
       }
       .timer .clock {
-        font-size: 64px;
+        font-size: 96px;
         margin: 6px 0 12px;
       }
       #timer-label {
         color: var(--muted);
-        font-size: 14px;
+        font-size: 16px;
       }
       .tasks {
         margin-top: 10px;
-        font-size: 17px;
+        font-size: 25px;
+      }
+      .links {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 2px solid var(--line);
+        color: var(--muted);
+        font-size: 21px;
+        white-space: nowrap;
+      }
+      .links b {
+        color: var(--accent);
       }
 
       body[data-layout="compact"] .hud {
@@ -40,7 +56,6 @@
         align-items: center;
         gap: 40px;
         padding: 0 40px;
-        border-left: 0;
         border-top: 2px solid var(--line);
       }
       body[data-layout="compact"] #goal {
@@ -55,6 +70,7 @@
         margin: 0;
       }
       body[data-layout="compact"] .timer .bar,
+      body[data-layout="compact"] .links,
       body[data-layout="compact"] .tasks-section {
         display: none;
       }
@@ -77,6 +93,12 @@
         <h2>Tasks</h2>
         <ul class="tasks" id="tasks"></ul>
       </section>
+
+      <footer class="links">
+        <span>Chat: <b>!discord</b> <b>!github</b> <b>!socials</b> <b>!setup</b></span>
+        <span>wazoo.dev</span>
+        <span>github.com/wazootech</span>
+      </footer>
     </main>
 
     <script src="session.js"></script>

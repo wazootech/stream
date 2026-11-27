@@ -4,6 +4,7 @@ import type { Api } from "./api.ts"
 import { tokenProvider } from "./auth.ts"
 import { runBridge } from "./bridge.ts"
 import { chatSource } from "./chat.ts"
+import { clearChat, showChat as drawChat } from "./chat-lines.ts"
 import { configPaths } from "./config.ts"
 import { readClient, SetupError, writeToken } from "./files.ts"
 import { signIn } from "./login.ts"
@@ -46,10 +47,12 @@ async function channelName(api: Api): Promise<string> {
   throw new SetupError("That sign-in has no channel. Run login and pick yours.")
 }
 
-async function watch(api: Api, { chatMs, subscriberMs }: Options): Promise<void> {
+async function watch(api: Api, options: Options): Promise<void> {
+  const { chatMs, subscriberMs, showChat } = options
+  if (showChat) clearChat()
   const since = Date.now()
   const log = console.log
-  const sources = [chatSource({ api, since, minMs: chatMs, log })]
+  const sources = [chatSource({ api, since, minMs: chatMs, showChat, log })]
   if (subscriberMs > 0) {
     sources.push(subscriberSource({ api, since, everyMs: subscriberMs }))
   }
@@ -60,7 +63,8 @@ async function watch(api: Api, { chatMs, subscriberMs }: Options): Promise<void>
   })
   log("Watching for new events. Ctrl+C to stop.")
   try {
-    await runBridge({ sources, emit: (cards) => queueCards(cards) })
+    const emit = (cards: Parameters<typeof queueCards>[0]) => queueCards(cards)
+    await runBridge({ sources, emit, chat: (update) => drawChat(update) })
   } finally {
     report()
   }
