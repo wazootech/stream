@@ -5,6 +5,8 @@ export const BRAND = {
   collectionName: "Wazoo Stream",
   /** Title shown on the overlays until `session title` sets one. */
   defaultTitle: "Wazoo Live",
+  /** Music label shown until `session music` changes it; a reset restores it. */
+  musicLabel: "StreamBeats - Electric",
   /** File written by `npm run build`. */
   collectionFile: "wazoo-stream.scenes.json",
   /** Backdrop color behind the scenes (Wazoo "void"), as [r, g, b]. */

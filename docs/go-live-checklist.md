@@ -27,8 +27,7 @@
 - [ ] Switch to **Main** and say the plan out loud.
 - [ ] One block at a time: `npm run session -- timer 45 "Block 1"`.
 - [ ] Break at every block end: `npm run session -- break`, then **Break**.
-- [ ] Settle predictions and check off tasks as they happen. The HUD is your own
-      progress bar too.
+- [ ] Check off tasks as they finish. The HUD is your own progress bar too.
 - [ ] If you can't think of anything to say, open [`when-stuck.md`](when-stuck.md).
 
 ## After

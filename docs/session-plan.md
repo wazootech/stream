@@ -16,8 +16,6 @@ Tasks (2-3, each finishable in one block):
 
 Block timer: 25 / 45 min        Break: every block, 5 min
 
-First prediction (say it before you run it):
-
 Stuck plan (what I do if the first task stalls past 15 min):
 ```
 
@@ -34,7 +32,6 @@ npm run session -- timer 45 "Block 1"
 
 1. Who you are and what you are building, in one sentence, for anyone who just arrived.
 2. The goal and the tasks, read from the HUD.
-3. The first prediction.
 
 ## At the end of each block
 

@@ -3,7 +3,7 @@ html,
 body {
   overflow: auto; /* session.css hides it for the overlays */
   background: var(--bg);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 [hidden] {
@@ -16,11 +16,11 @@ body {
   z-index: 1;
   max-height: 30vh;
   overflow: auto;
-  padding: 8px 10px;
+  padding: 4px 8px;
   background: var(--bg);
   border-bottom: 1px solid var(--line);
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -33,18 +33,28 @@ main,
 section {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 8px;
+  gap: 4px;
 }
 
 main {
-  padding: 10px;
+  padding: 6px;
 }
 
 section {
-  padding: 10px;
+  padding: 6px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 6px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h2 {
+  margin: 0;
 }
 
 .now {
@@ -53,11 +63,16 @@ section {
 
 .hint {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .clock {
-  font-size: 42px;
+  font-size: 24px;
+}
+
+summary {
+  cursor: pointer;
+  color: var(--muted);
 }
 
 input,
@@ -67,13 +82,13 @@ button {
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 4px;
-  padding: 7px 9px;
+  padding: 3px 7px;
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
   margin: 0;
 }
 
@@ -83,13 +98,17 @@ button {
 }
 
 .row input.minutes {
-  flex: 0 0 9ch;
+  flex: 0 0 8ch;
+}
+
+.row .grow {
+  flex: 1;
 }
 
 .pair,
 .confirm [data-armed] {
   display: grid;
-  gap: 6px;
+  gap: 4px;
 }
 
 .pair {
@@ -153,7 +172,7 @@ button.danger {
 pre {
   margin: 0;
   font: inherit;
-  font-size: 12px;
+  font-size: 11px;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }

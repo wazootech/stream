@@ -27,10 +27,6 @@
         tasks.append(li)
       }
     }
-
-    const p = state?.predictions
-    $("prediction").textContent = p?.current || "Nothing on the record yet."
-    $("score").textContent = p && p.total > 0 ? `Called it ${p.hits} of ${p.total}` : ""
   }
 
   function renderTimer() {
