@@ -43,11 +43,12 @@ re-import if you move the repo. `dist/` is gitignored for that reason.
 | **Starting Soon** | Countdown and today's tasks while you set up.                  |
 | **Main**          | Default scene: screen, webcam, and the HUD sidebar.            |
 | **Focus**         | Screen-first, with a slim goal and timer bar along the bottom. |
+| **Focus + Cam**   | Focus, with a small camera in the bottom-right corner.         |
 | **Main + Game**   | Main, with the game as a second screen under your main one.    |
 | **Game Focus**    | The game window, a small webcam, and the goal and timer bar.   |
 | **Break**         | Big countdown plus a rotating "stand up, drink water" nudge.   |
 
-An **Alerts** layer sits on top of all six scenes and shows subscriber, member, gifted
+An **Alerts** layer sits on top of all seven scenes and shows subscriber, member, gifted
 membership, and Super Chat cards (see [`docs/alerts.md`](docs/alerts.md)). It plays what
 you queue with `npm run session -- alert ...`, or what `npm run youtube` reads from your
 channel.

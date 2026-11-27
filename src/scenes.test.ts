@@ -12,7 +12,15 @@ test("the collection survives a JSON round trip", () => {
 test("every scene in scene_order exists and is a scene", () => {
   assert.deepEqual(
     collection.scene_order.map((s) => s.name),
-    ["Starting Soon", "Main", "Focus", "Main + Game", "Game Focus", "Break"],
+    [
+      "Starting Soon",
+      "Main",
+      "Focus",
+      "Focus + Cam",
+      "Main + Game",
+      "Game Focus",
+      "Break",
+    ],
   )
   for (const { name } of collection.scene_order) {
     assert.equal(byName.get(name)?.id, "scene", name)
@@ -85,6 +93,14 @@ const itemNames = (scene: string) =>
   (byName.get(scene)!.settings as { items: { name: string }[] }).items.map(
     (item) => item.name,
   )
+
+test("Focus + Cam is Focus with the camera on top", () => {
+  assert.deepEqual(itemNames("Focus + Cam"), [
+    ...itemNames("Focus").slice(0, -1),
+    "Webcam",
+    "Alerts",
+  ])
+})
 
 test("Game Focus captures the game window, not the whole display", () => {
   const names = itemNames("Game Focus")

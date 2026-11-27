@@ -2,8 +2,8 @@
 
 A transparent overlay that shows a card at the top of the screen for new subscribers,
 members, Super Chats, and more. It is the **Alerts** source, layered on top of every
-scene, so it works on Starting Soon and Break as well as Main, Focus, and both game
-scenes.
+scene, so it works on Starting Soon and Break as well as Main, both Focus scenes, and
+both game scenes.
 
 The overlay plays whatever is queued, one card at a time (six seconds each, in order).
 Two things queue cards: you, with `npm run session -- alert`, and the
